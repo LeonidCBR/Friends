@@ -9,14 +9,13 @@
 /* Begin PBXBuildFile section */
 		D7E0CAC82A5B99860039189D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAC72A5B99860039189D /* AppDelegate.m */; };
 		D7E0CACB2A5B99860039189D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CACA2A5B99860039189D /* SceneDelegate.m */; };
-		D7E0CACE2A5B99860039189D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CACD2A5B99860039189D /* ViewController.m */; };
-		D7E0CAD12A5B99860039189D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7E0CACF2A5B99860039189D /* Main.storyboard */; };
 		D7E0CAD32A5B998C0039189D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E0CAD22A5B998C0039189D /* Assets.xcassets */; };
 		D7E0CAD62A5B998C0039189D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7E0CAD42A5B998C0039189D /* LaunchScreen.storyboard */; };
 		D7E0CAD92A5B998C0039189D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAD82A5B998C0039189D /* main.m */; };
 		D7E0CAE32A5B998D0039189D /* FriendsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAE22A5B998D0039189D /* FriendsTests.m */; };
 		D7E0CAED2A5B998D0039189D /* FriendsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAEC2A5B998D0039189D /* FriendsUITests.m */; };
 		D7E0CAEF2A5B998D0039189D /* FriendsUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAEE2A5B998D0039189D /* FriendsUITestsLaunchTests.m */; };
+		D7E0CB002A5B9DB70039189D /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAFF2A5B9DB70039189D /* HomeController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +41,6 @@
 		D7E0CAC72A5B99860039189D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D7E0CAC92A5B99860039189D /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		D7E0CACA2A5B99860039189D /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		D7E0CACC2A5B99860039189D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D7E0CACD2A5B99860039189D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		D7E0CAD02A5B99860039189D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D7E0CAD22A5B998C0039189D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7E0CAD52A5B998C0039189D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7E0CAD72A5B998C0039189D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +50,8 @@
 		D7E0CAE82A5B998D0039189D /* FriendsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FriendsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E0CAEC2A5B998D0039189D /* FriendsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsUITests.m; sourceTree = "<group>"; };
 		D7E0CAEE2A5B998D0039189D /* FriendsUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsUITestsLaunchTests.m; sourceTree = "<group>"; };
+		D7E0CAFE2A5B9DB70039189D /* HomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
+		D7E0CAFF2A5B9DB70039189D /* HomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,13 +106,12 @@
 				D7E0CAC72A5B99860039189D /* AppDelegate.m */,
 				D7E0CAC92A5B99860039189D /* SceneDelegate.h */,
 				D7E0CACA2A5B99860039189D /* SceneDelegate.m */,
-				D7E0CACC2A5B99860039189D /* ViewController.h */,
-				D7E0CACD2A5B99860039189D /* ViewController.m */,
-				D7E0CACF2A5B99860039189D /* Main.storyboard */,
 				D7E0CAD22A5B998C0039189D /* Assets.xcassets */,
 				D7E0CAD42A5B998C0039189D /* LaunchScreen.storyboard */,
 				D7E0CAD72A5B998C0039189D /* Info.plist */,
 				D7E0CAD82A5B998C0039189D /* main.m */,
+				D7E0CAFE2A5B9DB70039189D /* HomeController.h */,
+				D7E0CAFF2A5B9DB70039189D /* HomeController.m */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -241,7 +238,6 @@
 			files = (
 				D7E0CAD62A5B998C0039189D /* LaunchScreen.storyboard in Resources */,
 				D7E0CAD32A5B998C0039189D /* Assets.xcassets in Resources */,
-				D7E0CAD12A5B99860039189D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7E0CACE2A5B99860039189D /* ViewController.m in Sources */,
+				D7E0CB002A5B9DB70039189D /* HomeController.m in Sources */,
 				D7E0CAC82A5B99860039189D /* AppDelegate.m in Sources */,
 				D7E0CAD92A5B998C0039189D /* main.m in Sources */,
 				D7E0CACB2A5B99860039189D /* SceneDelegate.m in Sources */,
@@ -306,14 +302,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D7E0CACF2A5B99860039189D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D7E0CAD02A5B99860039189D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D7E0CAD42A5B998C0039189D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -375,7 +363,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_NSMainStoryboardFile = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -427,7 +416,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_NSMainStoryboardFile = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -447,7 +437,7 @@
 				INFOPLIST_FILE = Friends/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -474,7 +464,7 @@
 				INFOPLIST_FILE = Friends/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
