@@ -8,6 +8,7 @@
 #define CELL_IDENTIFIER @"RecordCell"
 
 #import "HomeController.h"
+#import "DataProvider.h"
 
 @interface HomeController ()
 
@@ -37,6 +38,7 @@
     _segmentedControl = [[UISegmentedControl alloc] initWithItems:servers];
     _segmentedControl.selectedSegmentIndex = 0;
     self.navigationItem.titleView = _segmentedControl;
+    [_segmentedControl addTarget:self action:@selector(handleChangedRecordsProvider) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)configureSearchBar {
@@ -74,8 +76,13 @@
     if ([_searchBar.text length] == 0) {
         return;
     }
-#warning TODO - Implement loading data
-    NSLog(@"TODO - loading data with search text [%@]...", _searchBar.text);
+    RecordsProviderType recordsProviderType = _segmentedControl.selectedSegmentIndex;
+#warning TODO - Load data
+    NSLog(@"TODO - loading data with search text [%@] for provider %ld...", _searchBar.text, recordsProviderType);
+}
+
+- (void)handleChangedRecordsProvider {
+    [self loadData];
 }
 
 #pragma mark - UISearchBarDelegate

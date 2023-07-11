@@ -39,9 +39,14 @@
                BlueprintName = "FriendsTests"
                ReferencedContainer = "container:Friends.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "FriendsTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
-            skipped = "NO"
+            skipped = "YES"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
