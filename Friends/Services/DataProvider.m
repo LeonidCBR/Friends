@@ -34,13 +34,12 @@
     return self;
 }
 
-- (void)downloadDataForRecordsProviderType:(RecordsProviderType)recordsProviderType andSearchText:(NSString *)searchText completionHandler:(void (^)(NSData * _Nullable data, NSError * _Nullable error))completionHandler {
-    NSLog(@"Downloading data for %ld", (long)recordsProviderType);
+- (void)downloadDataForRecordsProviderType:(RecordsProviderType)recordsProviderType andSearchText:(NSString *)searchText completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler {
     NSString *urlString = [self getUrlStringForRecordsProviderType:recordsProviderType andSearchText:searchText];
     NSURL *url = [[NSURL alloc] initWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     [[_urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        completionHandler(data, error);
+        completionHandler(data, response, error);
     }] resume];
 }
 

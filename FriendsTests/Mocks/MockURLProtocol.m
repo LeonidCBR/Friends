@@ -7,7 +7,35 @@
 
 #import "MockURLProtocol.h"
 
+static NSError *_stubError = nil;
+static NSData *_stubData = nil;
+static NSURLResponse *_stubResponse = nil;
+
 @implementation MockURLProtocol
+
++ (NSError *)stubError {
+    return _stubError;
+}
+
++ (void)setStubError:(NSError * _Nullable)stubError {
+    _stubError = stubError;
+}
+
++ (NSData *)stubData {
+    return _stubData;
+}
+
++ (void)setStubData:(NSData * _Nullable)stubData {
+    _stubData = stubData;
+}
+
++ (NSURLResponse *)stubResponse {
+    return _stubResponse;
+}
+
++ (void)setStubResponse:(NSURLResponse * _Nullable)stubResponse {
+    _stubResponse = stubResponse;
+}
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
     return YES;
@@ -18,30 +46,13 @@
 }
 
 - (void)startLoading {
-    if (error) {
-        [self.client URLProtocol:self didFailWithError:error];
+    if (_stubError) {
+        [self.client URLProtocol:self didFailWithError:_stubError];
     } else {
-/*
-        // does not work (EXC_BAD_ACCESS)
-//        [self.client URLProtocol:self didReceiveResponse:stubResponse cacheStoragePolicy:NSURLCacheStorageAllowed];
-        // it works
-        NSURL *testUrl = [[NSURL alloc] initWithString:@"https://localhost"];
-        NSArray *objects = [[NSArray alloc] initWithObjects:@"Content-Type", nil];
-        NSArray *keys = [[NSArray alloc] initWithObjects:@"application/json", nil];
-        NSDictionary *testHeaders = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
-        NSHTTPURLResponse *testResponse = [[NSHTTPURLResponse alloc]
-                                           initWithURL:testUrl
-                                           statusCode:200
-                                           HTTPVersion:@"1.1"
-                                           headerFields:testHeaders];
-        [self.client URLProtocol:self didReceiveResponse:testResponse cacheStoragePolicy:NSURLCacheStorageAllowed]; // stubResponse
-*/
-        // does not work
-//        [self.client URLProtocol:self didLoadData:stubData];
-        // it works
-        NSString *testString = @"{\"status\":\"ok\"}";
-        NSData *testData = [testString dataUsingEncoding:NSUTF8StringEncoding];
-        [self.client URLProtocol:self didLoadData:testData]; //stubData
+        if (_stubResponse && _stubData) {
+            [self.client URLProtocol:self didReceiveResponse:_stubResponse cacheStoragePolicy:NSURLCacheStorageAllowedInMemoryOnly];
+            [self.client URLProtocol:self didLoadData:_stubData];
+        }
     }
     [self.client URLProtocolDidFinishLoading:self];
 }

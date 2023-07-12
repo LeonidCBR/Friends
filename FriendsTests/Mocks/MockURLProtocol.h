@@ -9,11 +9,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//static NSURLResponse *stubResponse;
-//static NSData *stubData;
-static NSError *error;
-
 @interface MockURLProtocol : NSURLProtocol
+
++ (NSError *)stubError;
+
++ (void)setStubError:(NSError * _Nullable)stubError;
+
++ (NSData *)stubData;
+
++ (void)setStubData:(NSData * _Nullable)stubData;
+
++ (NSURLResponse *)stubResponse;
+
++ (void)setStubResponse:(NSURLResponse * _Nullable)stubResponse;
 
 @end
 

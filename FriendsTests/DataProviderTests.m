@@ -33,9 +33,9 @@
 
 - (void)tearDown {
     _sut = nil;
-//    stubResponse = nil;
-//    stubData = nil;
-    error = nil;
+    MockURLProtocol.stubError = nil;
+    MockURLProtocol.stubData = nil;
+    MockURLProtocol.stubResponse = nil;
 }
 
 - (void)testDataProvider_WhenGivenGithubParameters_ShouldReturnValidURLString {
@@ -53,29 +53,38 @@
 }
 
 - (void)testDataProvider_WhenGivenSuccessfullResponse_ReturnsSuccess {
-//    NSURL *testUrl = [[NSURL alloc] initWithString:@"https://localhost"];
-//    NSArray *objects = [[NSArray alloc] initWithObjects:@"Content-Type", nil];
-//    NSArray *keys = [[NSArray alloc] initWithObjects:@"application/json", nil];
-//    NSDictionary *testHeaders = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
-//    NSHTTPURLResponse *testResponse = [[NSHTTPURLResponse alloc]
-//                                       initWithURL:testUrl
-//                                       statusCode:200
-//                                       HTTPVersion:@"1.1"
-//                                       headerFields:testHeaders];
-//    stubResponse = testResponse;
-//    stubData = testData;
-    error = nil;
+    /// Set up stub error
+    MockURLProtocol.stubError = nil;
+    /// Set up stub data
+    NSString *stubString = @"{\"status\":\"ok\"}";
+    NSData *stubData = [stubString dataUsingEncoding:NSUTF8StringEncoding];
+    MockURLProtocol.stubData = stubData;
+    /// Set up stub response
+    NSArray *objects = [[NSArray alloc] initWithObjects:@"Content-Type", nil];
+    NSArray *keys = [[NSArray alloc] initWithObjects:@"application/json", nil];
+    NSDictionary *stubHeaders = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
+    NSURL *stubUrl = [[NSURL alloc] initWithString:@"https://localhost"];
+    NSHTTPURLResponse *stubResponse = [[NSHTTPURLResponse alloc]
+                                       initWithURL:stubUrl
+                                       statusCode:200
+                                       HTTPVersion:@"1.1"
+                                       headerFields:stubHeaders];
+    MockURLProtocol.stubResponse = stubResponse;
+    
     RecordsProviderType recordsProviderType = gitHub;
     XCTestExpectation *expectation = [self expectationWithDescription:@"NetworkProvider Response Expectation"];
-    [_sut downloadDataForRecordsProviderType:recordsProviderType andSearchText:@"test" completionHandler:^(NSData * _Nullable data, NSError * _Nullable error) {
+    [_sut downloadDataForRecordsProviderType:recordsProviderType andSearchText:@"test" completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         XCTAssertNil(error, @"downloadData error %@", error);
         XCTAssertNotNil(data);
-        NSString *testString = @"{\"status\":\"ok\"}";
-        NSData *testData = [testString dataUsingEncoding:NSUTF8StringEncoding];
-        XCTAssertEqualObjects(data, testData);
+        XCTAssertEqualObjects(data, stubData);
+        XCTAssertNotNil(response);
+        XCTAssertTrue([response isKindOfClass:[NSHTTPURLResponse class]]);
+        XCTAssertEqualObjects([response.URL absoluteString], @"https://localhost");
+        XCTAssertEqual([(NSHTTPURLResponse *)response statusCode], 200);
+        NSString *contentType = [(NSHTTPURLResponse *)response valueForHTTPHeaderField:@"application/json"];
+        XCTAssertEqualObjects(contentType, @"Content-Type");
         [expectation fulfill];
     }];
-
     [self waitForExpectations:[[NSArray alloc] initWithObjects:expectation, nil] timeout:5];
 }
 

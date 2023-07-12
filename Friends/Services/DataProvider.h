@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, RecordsProviderType) {
 
 - (instancetype)initWithUrlSession:(NSURLSession * _Nonnull)urlSession;
 
-- (void)downloadDataForRecordsProviderType:(RecordsProviderType)recordsProviderType andSearchText:(NSString *)searchText completionHandler:(void (^)(NSData * _Nullable data, NSError * _Nullable error))completionHandler;
+- (void)downloadDataForRecordsProviderType:(RecordsProviderType)recordsProviderType andSearchText:(NSString *)searchText completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
 
 @end
 
