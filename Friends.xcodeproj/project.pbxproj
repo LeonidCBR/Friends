@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D78871332A5F8BF500E671A7 /* ITunesRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871322A5F8BF400E671A7 /* ITunesRecord.m */; };
+		D78871362A5F928400E671A7 /* GithubRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871352A5F928400E671A7 /* GithubRecord.m */; };
+		D788713B2A5F954000E671A7 /* GithubDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D788713A2A5F954000E671A7 /* GithubDecoder.m */; };
+		D788713D2A5F96FF00E671A7 /* GithubDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D788713C2A5F96FF00E671A7 /* GithubDecoderTests.m */; };
+		D788713F2A5FAAA400E671A7 /* github.json in Resources */ = {isa = PBXBuildFile; fileRef = D788713E2A5FAAA400E671A7 /* github.json */; };
 		D7E0CAC82A5B99860039189D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAC72A5B99860039189D /* AppDelegate.m */; };
 		D7E0CACB2A5B99860039189D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CACA2A5B99860039189D /* SceneDelegate.m */; };
 		D7E0CAD32A5B998C0039189D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E0CAD22A5B998C0039189D /* Assets.xcassets */; };
@@ -39,6 +44,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D78871302A5F8AF900E671A7 /* ApiRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiRecord.h; sourceTree = "<group>"; };
+		D78871312A5F8BF400E671A7 /* ITunesRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITunesRecord.h; sourceTree = "<group>"; };
+		D78871322A5F8BF400E671A7 /* ITunesRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITunesRecord.m; sourceTree = "<group>"; };
+		D78871342A5F928400E671A7 /* GithubRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GithubRecord.h; sourceTree = "<group>"; };
+		D78871352A5F928400E671A7 /* GithubRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GithubRecord.m; sourceTree = "<group>"; };
+		D78871372A5F941900E671A7 /* RecordsDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordsDecoder.h; sourceTree = "<group>"; };
+		D78871392A5F954000E671A7 /* GithubDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GithubDecoder.h; sourceTree = "<group>"; };
+		D788713A2A5F954000E671A7 /* GithubDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GithubDecoder.m; sourceTree = "<group>"; };
+		D788713C2A5F96FF00E671A7 /* GithubDecoderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GithubDecoderTests.m; sourceTree = "<group>"; };
+		D788713E2A5FAAA400E671A7 /* github.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = github.json; sourceTree = "<group>"; };
 		D7E0CAC32A5B99860039189D /* Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E0CAC62A5B99860039189D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D7E0CAC72A5B99860039189D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,6 +102,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D788712F2A5F8A3300E671A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D78871312A5F8BF400E671A7 /* ITunesRecord.h */,
+				D78871322A5F8BF400E671A7 /* ITunesRecord.m */,
+				D78871342A5F928400E671A7 /* GithubRecord.h */,
+				D78871352A5F928400E671A7 /* GithubRecord.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D78871382A5F950200E671A7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D78871302A5F8AF900E671A7 /* ApiRecord.h */,
+				D78871372A5F941900E671A7 /* RecordsDecoder.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		D7E0CABA2A5B99860039189D = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +145,8 @@
 		D7E0CAC52A5B99860039189D /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				D78871382A5F950200E671A7 /* Protocols */,
+				D788712F2A5F8A3300E671A7 /* Model */,
 				D7E0CB042A5CE7AF0039189D /* Controllers */,
 				D7E0CB052A5CE8960039189D /* Services */,
 				D7E0CAC62A5B99860039189D /* AppDelegate.h */,
@@ -130,6 +167,7 @@
 				D7E0CB122A5D40440039189D /* Mocks */,
 				D7E0CAE22A5B998D0039189D /* FriendsTests.m */,
 				D7E0CB102A5D155C0039189D /* DataProviderTests.m */,
+				D788713C2A5F96FF00E671A7 /* GithubDecoderTests.m */,
 			);
 			path = FriendsTests;
 			sourceTree = "<group>";
@@ -157,6 +195,8 @@
 			children = (
 				D7E0CB0D2A5CEB400039189D /* DataProvider.h */,
 				D7E0CB0E2A5CEB400039189D /* DataProvider.m */,
+				D78871392A5F954000E671A7 /* GithubDecoder.h */,
+				D788713A2A5F954000E671A7 /* GithubDecoder.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -166,6 +206,7 @@
 			children = (
 				D7E0CB132A5D40AF0039189D /* MockURLProtocol.h */,
 				D7E0CB142A5D40AF0039189D /* MockURLProtocol.m */,
+				D788713E2A5FAAA400E671A7 /* github.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -282,6 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D788713F2A5FAAA400E671A7 /* github.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,11 +341,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D78871332A5F8BF500E671A7 /* ITunesRecord.m in Sources */,
 				D7E0CB002A5B9DB70039189D /* HomeController.m in Sources */,
 				D7E0CAC82A5B99860039189D /* AppDelegate.m in Sources */,
+				D788713B2A5F954000E671A7 /* GithubDecoder.m in Sources */,
 				D7E0CAD92A5B998C0039189D /* main.m in Sources */,
 				D7E0CACB2A5B99860039189D /* SceneDelegate.m in Sources */,
 				D7E0CB0F2A5CEB400039189D /* DataProvider.m in Sources */,
+				D78871362A5F928400E671A7 /* GithubRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +359,7 @@
 				D7E0CB112A5D155C0039189D /* DataProviderTests.m in Sources */,
 				D7E0CB152A5D40AF0039189D /* MockURLProtocol.m in Sources */,
 				D7E0CAE32A5B998D0039189D /* FriendsTests.m in Sources */,
+				D788713D2A5F96FF00E671A7 /* GithubDecoderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
