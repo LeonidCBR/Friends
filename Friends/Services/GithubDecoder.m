@@ -9,46 +9,74 @@
 
 @implementation GithubDecoder
 
-#warning TODO: Refactor the method
 - (nonnull NSArray<ApiRecord> *)decode:(NSData * _Nonnull)data {
+    NSDictionary *jsonDictionary = [self getJSONDictionaryFromData:data];
+    NSArray *jsonArray = [self getJSONArrayFromDictionary:jsonDictionary];
+    NSMutableArray<ApiRecord> *githubRecords = [self createEmptyArrayFromJSONDictionary:jsonDictionary withCapacityForKey:@"total_count"];
+    for (NSDictionary *jsonItem in jsonArray) {
+        GithubRecord *githubRecord = [self getRecordFromJSONItem:jsonItem];
+        [githubRecords addObject:githubRecord];
+    }
+    NSArray<ApiRecord> *resultRecords = [githubRecords copy];
+    return resultRecords;
+}
+
+#pragma mark - Private Methods
+
+#warning Consider to move the method to super class
+- (NSDictionary * _Nonnull)getJSONDictionaryFromData:(NSData * _Nonnull)data {
     NSError *error = nil;
     id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-#warning TODO: Check for error is NULL
-
+    if (error) {
+#warning TODO: Throw wrong data format error
+        return nil;
+    }
+    if (!jsonObject) {
+#warning TODO: Throw wrong data format error
+        return nil;
+    }
     if (![jsonObject isKindOfClass:[NSDictionary class]]) {
 #warning TODO: Throw wrong data format error
         return nil;
     }
+    return jsonObject;
+}
 
-    NSDictionary *results = jsonObject;
-    id items = [results objectForKey:@"items"];
+/// Create Mutable Array with particular capacity
+- (NSMutableArray<ApiRecord> * _Nonnull)createEmptyArrayFromJSONDictionary:(NSDictionary * _Nonnull)jsonDictionary withCapacityForKey:(NSString *)countKey {
+    NSMutableArray<ApiRecord> *apiRecords;
+    id totalCount = [jsonDictionary objectForKey:countKey];
+    if (totalCount && [totalCount isKindOfClass:[NSNumber class]] && totalCount > 0) {
+        NSLog(@"INFO: Create an empty array with capacity = %@", totalCount);
+        apiRecords = [NSMutableArray<ApiRecord> arrayWithCapacity:[totalCount intValue]];
+    } else {
+        NSLog(@"INFO: Create an empty array with default capacity.");
+        apiRecords = [NSMutableArray<ApiRecord> array];
+    }
+    return apiRecords;
+}
 
-    if (![items isKindOfClass:[NSArray class]]) {
+- (NSArray * _Nonnull)getJSONArrayFromDictionary:(NSDictionary * _Nonnull)jsonDictionary {
+    id jsonArray = [jsonDictionary objectForKey:@"items"];
+
+    if (!jsonArray) {
 #warning TODO: Throw wrong data format error
         return nil;
     }
 
-    NSMutableArray<ApiRecord> *githubRecords;
-
-    id totalCount = [results objectForKey:@"total_count"];
-    if (totalCount && [totalCount isKindOfClass:[NSNumber class]] && totalCount > 0) {
-        NSLog(@"INFO: Create an empty array with capacity = %@", totalCount);
-        githubRecords = [NSMutableArray<ApiRecord> arrayWithCapacity:[totalCount intValue]];
-    } else {
-        NSLog(@"INFO: Create an empty array with default capacity.");
-        githubRecords = [NSMutableArray<ApiRecord> array];
+    if (![jsonArray isKindOfClass:[NSArray class]]) {
+#warning TODO: Throw wrong data format error
+        return nil;
     }
+    return jsonArray;
+}
 
-    for (NSDictionary *record in items) {
-        NSString *login = [record objectForKey:@"login"];
-        NSString *account = [record objectForKey:@"url"];
-        NSString *avatar = [record objectForKey:@"avatar_url"];
-        GithubRecord *githubRecord = [[GithubRecord alloc] initWithLogin:login account:account avatar:avatar];
-        [githubRecords addObject:githubRecord];
-    }
-
-    NSArray<ApiRecord> *resultRecords = [githubRecords copy];
-    return resultRecords;
+- (GithubRecord *)getRecordFromJSONItem:(NSDictionary *)jsonItem {
+    NSString *login = [jsonItem objectForKey:@"login"];
+    NSString *account = [jsonItem objectForKey:@"url"];
+    NSString *avatar = [jsonItem objectForKey:@"avatar_url"];
+    GithubRecord *githubRecord = [[GithubRecord alloc] initWithLogin:login account:account avatar:avatar];
+    return githubRecord;
 }
 
 @end
