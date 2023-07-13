@@ -6,12 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseDecoder.h"
 #import "RecordsDecoder.h"
 #import "GithubRecord.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GithubDecoder : NSObject <RecordsDecoder>
+@interface GithubDecoder : BaseDecoder <RecordsDecoder>
 
 - (nonnull NSArray<ApiRecord> *)decode:(NSData * _Nonnull)data;
 

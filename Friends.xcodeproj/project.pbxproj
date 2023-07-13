@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D75DD8942A6004690016D73C /* BaseDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D75DD8932A6004690016D73C /* BaseDecoder.m */; };
 		D78871332A5F8BF500E671A7 /* ITunesRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871322A5F8BF400E671A7 /* ITunesRecord.m */; };
 		D78871362A5F928400E671A7 /* GithubRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871352A5F928400E671A7 /* GithubRecord.m */; };
 		D788713B2A5F954000E671A7 /* GithubDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D788713A2A5F954000E671A7 /* GithubDecoder.m */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D75DD8922A6004690016D73C /* BaseDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDecoder.h; sourceTree = "<group>"; };
+		D75DD8932A6004690016D73C /* BaseDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDecoder.m; sourceTree = "<group>"; };
 		D78871302A5F8AF900E671A7 /* ApiRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiRecord.h; sourceTree = "<group>"; };
 		D78871312A5F8BF400E671A7 /* ITunesRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITunesRecord.h; sourceTree = "<group>"; };
 		D78871322A5F8BF400E671A7 /* ITunesRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITunesRecord.m; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 				D788713A2A5F954000E671A7 /* GithubDecoder.m */,
 				D78871402A5FC50900E671A7 /* ITunesDecoder.h */,
 				D78871412A5FC50900E671A7 /* ITunesDecoder.m */,
+				D75DD8922A6004690016D73C /* BaseDecoder.h */,
+				D75DD8932A6004690016D73C /* BaseDecoder.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				D7E0CB002A5B9DB70039189D /* HomeController.m in Sources */,
 				D7E0CAC82A5B99860039189D /* AppDelegate.m in Sources */,
 				D788713B2A5F954000E671A7 /* GithubDecoder.m in Sources */,
+				D75DD8942A6004690016D73C /* BaseDecoder.m in Sources */,
 				D7E0CAD92A5B998C0039189D /* main.m in Sources */,
 				D7E0CACB2A5B99860039189D /* SceneDelegate.m in Sources */,
 				D7E0CB0F2A5CEB400039189D /* DataProvider.m in Sources */,
