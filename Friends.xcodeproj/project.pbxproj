@@ -12,6 +12,9 @@
 		D788713B2A5F954000E671A7 /* GithubDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D788713A2A5F954000E671A7 /* GithubDecoder.m */; };
 		D788713D2A5F96FF00E671A7 /* GithubDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D788713C2A5F96FF00E671A7 /* GithubDecoderTests.m */; };
 		D788713F2A5FAAA400E671A7 /* github.json in Resources */ = {isa = PBXBuildFile; fileRef = D788713E2A5FAAA400E671A7 /* github.json */; };
+		D78871422A5FC50900E671A7 /* ITunesDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871412A5FC50900E671A7 /* ITunesDecoder.m */; };
+		D78871442A5FC70200E671A7 /* ITunesDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871432A5FC70200E671A7 /* ITunesDecoderTests.m */; };
+		D78871462A5FC81500E671A7 /* itunes.json in Resources */ = {isa = PBXBuildFile; fileRef = D78871452A5FC81500E671A7 /* itunes.json */; };
 		D7E0CAC82A5B99860039189D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAC72A5B99860039189D /* AppDelegate.m */; };
 		D7E0CACB2A5B99860039189D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CACA2A5B99860039189D /* SceneDelegate.m */; };
 		D7E0CAD32A5B998C0039189D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E0CAD22A5B998C0039189D /* Assets.xcassets */; };
@@ -54,6 +57,10 @@
 		D788713A2A5F954000E671A7 /* GithubDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GithubDecoder.m; sourceTree = "<group>"; };
 		D788713C2A5F96FF00E671A7 /* GithubDecoderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GithubDecoderTests.m; sourceTree = "<group>"; };
 		D788713E2A5FAAA400E671A7 /* github.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = github.json; sourceTree = "<group>"; };
+		D78871402A5FC50900E671A7 /* ITunesDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITunesDecoder.h; sourceTree = "<group>"; };
+		D78871412A5FC50900E671A7 /* ITunesDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITunesDecoder.m; sourceTree = "<group>"; };
+		D78871432A5FC70200E671A7 /* ITunesDecoderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITunesDecoderTests.m; sourceTree = "<group>"; };
+		D78871452A5FC81500E671A7 /* itunes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = itunes.json; sourceTree = "<group>"; };
 		D7E0CAC32A5B99860039189D /* Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E0CAC62A5B99860039189D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D7E0CAC72A5B99860039189D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -168,6 +175,7 @@
 				D7E0CAE22A5B998D0039189D /* FriendsTests.m */,
 				D7E0CB102A5D155C0039189D /* DataProviderTests.m */,
 				D788713C2A5F96FF00E671A7 /* GithubDecoderTests.m */,
+				D78871432A5FC70200E671A7 /* ITunesDecoderTests.m */,
 			);
 			path = FriendsTests;
 			sourceTree = "<group>";
@@ -197,6 +205,8 @@
 				D7E0CB0E2A5CEB400039189D /* DataProvider.m */,
 				D78871392A5F954000E671A7 /* GithubDecoder.h */,
 				D788713A2A5F954000E671A7 /* GithubDecoder.m */,
+				D78871402A5FC50900E671A7 /* ITunesDecoder.h */,
+				D78871412A5FC50900E671A7 /* ITunesDecoder.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -207,6 +217,7 @@
 				D7E0CB132A5D40AF0039189D /* MockURLProtocol.h */,
 				D7E0CB142A5D40AF0039189D /* MockURLProtocol.m */,
 				D788713E2A5FAAA400E671A7 /* github.json */,
+				D78871452A5FC81500E671A7 /* itunes.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -324,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D788713F2A5FAAA400E671A7 /* github.json in Resources */,
+				D78871462A5FC81500E671A7 /* itunes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D78871332A5F8BF500E671A7 /* ITunesRecord.m in Sources */,
+				D78871422A5FC50900E671A7 /* ITunesDecoder.m in Sources */,
 				D7E0CB002A5B9DB70039189D /* HomeController.m in Sources */,
 				D7E0CAC82A5B99860039189D /* AppDelegate.m in Sources */,
 				D788713B2A5F954000E671A7 /* GithubDecoder.m in Sources */,
@@ -360,6 +373,7 @@
 				D7E0CB152A5D40AF0039189D /* MockURLProtocol.m in Sources */,
 				D7E0CAE32A5B998D0039189D /* FriendsTests.m in Sources */,
 				D788713D2A5F96FF00E671A7 /* GithubDecoderTests.m in Sources */,
+				D78871442A5FC70200E671A7 /* ITunesDecoderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

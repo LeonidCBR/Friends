@@ -48,7 +48,7 @@
         NSBundle *bundle = [NSBundle bundleForClass:[GithubDecoderTests class]];
         NSURL *jsonUrl = [bundle URLForResource:@"github" withExtension:@"json"];
         NSData *jsonData = [[NSData alloc] initWithContentsOfURL:jsonUrl];
-        NSArray *githubRecords = [_sut decode:jsonData];
+        [_sut decode:jsonData];
     }];
 }
 
