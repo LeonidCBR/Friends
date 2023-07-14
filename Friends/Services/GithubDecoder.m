@@ -5,14 +5,17 @@
 //  Created by Яна Латышева on 13.07.2023.
 //
 
+#define ITEMS @"items"
+#define ITEMS_COUNT @"total_count"
+
 #import "GithubDecoder.h"
 
 @implementation GithubDecoder
 
 - (nonnull NSArray<ApiRecord> *)decode:(NSData * _Nonnull)data {
     NSDictionary *jsonDictionary = [self getJSONDictionaryFromData:data];
-    NSArray *jsonArray = [self getJSONArrayFromDictionary:jsonDictionary arrayForKey:@"items"];
-    NSMutableArray<ApiRecord> *githubRecords = [self createEmptyArrayFromJSONDictionary:jsonDictionary withCapacityForKey:@"total_count"];
+    NSArray *jsonArray = [self getJSONArrayFromDictionary:jsonDictionary arrayForKey:ITEMS];
+    NSMutableArray<ApiRecord> *githubRecords = [self createEmptyArrayFromJSONDictionary:jsonDictionary withCapacityForKey:ITEMS_COUNT];
     for (NSDictionary *jsonItem in jsonArray) {
         GithubRecord *githubRecord = [self getRecordFromJSONItem:jsonItem];
         [githubRecords addObject:githubRecord];

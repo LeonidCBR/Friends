@@ -7,10 +7,11 @@
 
 #import <Foundation/Foundation.h>
 #import "RecordsDecoder.h"
+#import "BaseDecoder.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ITunesDecoder : NSObject <RecordsDecoder>
+@interface ITunesDecoder : BaseDecoder <RecordsDecoder>
 
 - (nonnull NSArray<ApiRecord> *)decode:(NSData * _Nonnull)data;
 
