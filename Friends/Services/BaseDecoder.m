@@ -28,15 +28,15 @@
 }
 
 /// Create Mutable Array with particular capacity
-- (NSMutableArray<ApiRecord> * _Nonnull)createEmptyArrayFromJSONDictionary:(NSDictionary * _Nonnull)jsonDictionary withCapacityForKey:(NSString *)countKey {
-    NSMutableArray<ApiRecord> *apiRecords;
+- (NSMutableArray<id<ApiRecord>> * _Nonnull)createEmptyArrayFromJSONDictionary:(NSDictionary * _Nonnull)jsonDictionary withCapacityForKey:(NSString *)countKey {
+    NSMutableArray<id<ApiRecord>> *apiRecords;
     id totalCount = [jsonDictionary objectForKey:countKey];
     if (totalCount && [totalCount isKindOfClass:[NSNumber class]] && totalCount > 0) {
         NSLog(@"INFO: Create an empty array with capacity = %@", totalCount);
-        apiRecords = [NSMutableArray<ApiRecord> arrayWithCapacity:[totalCount intValue]];
+        apiRecords = [NSMutableArray<id<ApiRecord>> arrayWithCapacity:[totalCount intValue]];
     } else {
         NSLog(@"INFO: Create an empty array with default capacity.");
-        apiRecords = [NSMutableArray<ApiRecord> array];
+        apiRecords = [NSMutableArray<id<ApiRecord>> array];
     }
     return apiRecords;
 }

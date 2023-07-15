@@ -13,15 +13,15 @@
 
 @implementation ITunesDecoder
 
-- (nonnull NSArray<ApiRecord> *)decode:(NSData * _Nonnull)data {
+- (nonnull NSArray<id<ApiRecord>> *)decode:(NSData * _Nonnull)data {
     NSDictionary *jsonDictionary = [self getJSONDictionaryFromData:data];
     NSArray *jsonArray = [self getJSONArrayFromDictionary:jsonDictionary arrayForKey:ITEMS];
-    NSMutableArray<ApiRecord> *itunesRecords = [self createEmptyArrayFromJSONDictionary:jsonDictionary withCapacityForKey:ITEMS_COUNT];
+    NSMutableArray<id<ApiRecord>> *itunesRecords = [self createEmptyArrayFromJSONDictionary:jsonDictionary withCapacityForKey:ITEMS_COUNT];
     for (NSDictionary *jsonItem in jsonArray) {
         ITunesRecord *itunesRecord = [self getRecordFromJSONItem:jsonItem];
         [itunesRecords addObject:itunesRecord];
     }
-    NSArray<ApiRecord> *resultRecords = [itunesRecords copy];
+    NSArray<id<ApiRecord>> *resultRecords = [itunesRecords copy];
     return resultRecords;
 }
 

@@ -14,11 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithArtist:(NSString *)artist track:(NSString *)track artwork:(NSString *)artwork;
 
-#warning TODO - do i need nonatomic???
-//@property (readonly) NSString *user;
 - (nonnull NSString *)user;
 
-//@property (readonly) NSString *label;
 - (nonnull NSString *)label;
 
 - (NSURL *)icon;

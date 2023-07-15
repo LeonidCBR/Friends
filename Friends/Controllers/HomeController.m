@@ -8,27 +8,34 @@
 #define CELL_IDENTIFIER @"RecordCell"
 
 #import "HomeController.h"
-#import "DataProvider.h"
 
 @interface HomeController ()
 
+@property (strong, nonatomic) RecordsViewModel *recordsViewModel;
 @property (strong, nonatomic) UISegmentedControl *segmentedControl;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) NSArray *records;
 
 @end
 
 @implementation HomeController
 
+- (instancetype)initWithRecordsViewModel:(RecordsViewModel *)recordsViewModel {
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        _recordsViewModel = recordsViewModel;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Friends";
     self.view.backgroundColor = [UIColor whiteColor];
-    _records = [NSArray new];
     [self configureSegmentedControl];
     [self configureSearchBar];
     [self configureTableView];
+    _recordsViewModel.delegate = self;
 }
 
 #pragma mark - Methods
@@ -77,8 +84,7 @@
         return;
     }
     RecordsProviderType recordsProviderType = _segmentedControl.selectedSegmentIndex;
-#warning TODO - Load data
-    NSLog(@"TODO - loading data with search text [%@] for provider %ld...", _searchBar.text, recordsProviderType);
+    [_recordsViewModel loadRecordsForRecordsProviderType:recordsProviderType andSearhText:_searchBar.text];
 }
 
 - (void)handleChangedRecordsProvider {
@@ -110,13 +116,26 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _records.count;
+    return [_recordsViewModel getRecordsCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
 #warning TODO - Configure the cell
+    id<ApiRecord> record = [_recordsViewModel getRecordAtRow:indexPath.row];
+    cell.textLabel.text = [record user];
     return cell;
+}
+
+#pragma mark - RecordsViewModelDelegate
+
+- (void)handleUpdatedRecords {
+    [_tableView reloadData];
+}
+
+- (void)handleError:(NSError *)error {
+#warning TODO: Show alert message with error
+    NSLog(@"DEBUG: Got error! %@", error.debugDescription);
 }
 
 @end

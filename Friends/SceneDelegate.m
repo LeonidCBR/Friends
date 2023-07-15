@@ -6,7 +6,6 @@
 //
 
 #import "SceneDelegate.h"
-#import "HomeController.h"
 
 @interface SceneDelegate ()
 
@@ -17,7 +16,9 @@
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     _window = [[UIWindow alloc] initWithWindowScene:(UIWindowScene *)scene];
-    _window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[HomeController new]];
+    RecordsViewModel *recordsVM = [RecordsViewModel new];
+    HomeController *homeController = [[HomeController alloc] initWithRecordsViewModel:recordsVM];
+    _window.rootViewController = [[UINavigationController alloc] initWithRootViewController:homeController];
     [_window makeKeyAndVisible];
 }
 

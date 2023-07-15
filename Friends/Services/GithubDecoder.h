@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GithubDecoder : BaseDecoder <RecordsDecoder>
 
-- (nonnull NSArray<ApiRecord> *)decode:(NSData * _Nonnull)data;
+- (nonnull NSArray<id<ApiRecord>> *)decode:(NSData * _Nonnull)data;
 
 @end
 

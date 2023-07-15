@@ -6,10 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataProvider.h"
+#import "RecordsViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface HomeController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, RecordsViewModelDelegate>
+
+- (instancetype)initWithRecordsViewModel:(RecordsViewModel *)recordsViewModel;
 
 @end
 
