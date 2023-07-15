@@ -10,6 +10,7 @@
 #import "DataProvider.h"
 #import "GithubDecoder.h"
 #import "ITunesDecoder.h"
+#import "DecodersFactory.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

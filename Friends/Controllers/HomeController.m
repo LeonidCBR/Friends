@@ -121,7 +121,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
-#warning TODO - Configure the cell
     id<ApiRecord> record = [_recordsViewModel getRecordAtRow:indexPath.row];
     cell.textLabel.text = [record user];
     return cell;

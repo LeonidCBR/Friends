@@ -10,7 +10,7 @@
 @interface RecordsViewModel()
 
 @property (strong, nonatomic) DataProvider *dataProvider;
-@property (strong, nonatomic) NSArray *records;
+@property (strong, nonatomic) NSArray<id<ApiRecord>> *records;
 
 @end
 
@@ -42,7 +42,6 @@
     NSLog(@"TODO - loading data with search text [%@] for provider %ld...", searchText, recordsProviderType);
     __weak RecordsViewModel *weakSelf = self;
     [_dataProvider downloadDataForRecordsProviderType:recordsProviderType andSearchText:searchText completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-#warning REMEMBER about background queue
         if (!data) {
             if (error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -55,20 +54,7 @@
                 NSLog(@"DEBUG: There is neither data nor error");
             }
         }
-#warning TODO - Create FactoryDecoders
-        id<RecordsDecoder> recordsDecoder;
-        switch (recordsProviderType) {
-            case iTunes:
-                recordsDecoder = [ITunesDecoder new];
-                break;
-            case gitHub:
-                recordsDecoder = [GithubDecoder new];
-                break;
-            default:
-                NSLog(@"Unexpected records provider type!");
-                recordsDecoder = nil;
-                break;
-        }
+        id<RecordsDecoder> recordsDecoder = [DecodersFactory getDecoderForRecordsProviderType:recordsProviderType];
         NSArray *decodedRecords = [recordsDecoder decode:data];
         NSLog(@"DEBUG: Got %lu records!", decodedRecords.count);
         dispatch_async(dispatch_get_main_queue(), ^{
