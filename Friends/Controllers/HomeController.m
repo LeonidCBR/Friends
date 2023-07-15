@@ -5,7 +5,7 @@
 //  Created by Яна Латышева on 10.07.2023.
 //
 
-#define CELL_IDENTIFIER @"RecordCell"
+#define RECORD_CELL_IDENTIFIER @"RecordCellIdentifier"
 
 #import "HomeController.h"
 
@@ -66,7 +66,7 @@
     _tableView = [UITableView new];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER];
+    [_tableView registerClass:[RecordCell class] forCellReuseIdentifier:RECORD_CELL_IDENTIFIER];
     [self.view addSubview:_tableView];
     _tableView.translatesAutoresizingMaskIntoConstraints = NO;
     [NSLayoutConstraint activateConstraints:
@@ -120,9 +120,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
+    RecordCell *cell = [tableView dequeueReusableCellWithIdentifier:RECORD_CELL_IDENTIFIER forIndexPath:indexPath];
     id<ApiRecord> record = [_recordsViewModel getRecordAtRow:indexPath.row];
-    cell.textLabel.text = [record user];
+    [cell setUserName:record.user];
+    [cell setDescription:record.label];
     return cell;
 }
 

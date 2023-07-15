@@ -18,6 +18,7 @@
 		D78871462A5FC81500E671A7 /* itunes.json in Resources */ = {isa = PBXBuildFile; fileRef = D78871452A5FC81500E671A7 /* itunes.json */; };
 		D7CD37432A6248F100FDF304 /* RecordsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CD37422A6248F100FDF304 /* RecordsViewModel.m */; };
 		D7CD37472A62728F00FDF304 /* DecodersFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CD37462A62728F00FDF304 /* DecodersFactory.m */; };
+		D7CD374B2A6279B300FDF304 /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CD374A2A6279B300FDF304 /* RecordCell.m */; };
 		D7E0CAC82A5B99860039189D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAC72A5B99860039189D /* AppDelegate.m */; };
 		D7E0CACB2A5B99860039189D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CACA2A5B99860039189D /* SceneDelegate.m */; };
 		D7E0CAD32A5B998C0039189D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E0CAD22A5B998C0039189D /* Assets.xcassets */; };
@@ -71,6 +72,8 @@
 		D7CD37442A62538900FDF304 /* RecordsViewModelDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordsViewModelDelegate.h; sourceTree = "<group>"; };
 		D7CD37452A62728F00FDF304 /* DecodersFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecodersFactory.h; sourceTree = "<group>"; };
 		D7CD37462A62728F00FDF304 /* DecodersFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DecodersFactory.m; sourceTree = "<group>"; };
+		D7CD37492A6279B300FDF304 /* RecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordCell.h; sourceTree = "<group>"; };
+		D7CD374A2A6279B300FDF304 /* RecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordCell.m; sourceTree = "<group>"; };
 		D7E0CAC32A5B99860039189D /* Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E0CAC62A5B99860039189D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D7E0CAC72A5B99860039189D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -149,6 +152,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		D7CD37482A62796000FDF304 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7CD37492A6279B300FDF304 /* RecordCell.h */,
+				D7CD374A2A6279B300FDF304 /* RecordCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D7E0CABA2A5B99860039189D = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +186,7 @@
 			children = (
 				D78871382A5F950200E671A7 /* Protocols */,
 				D788712F2A5F8A3300E671A7 /* Models */,
+				D7CD37482A62796000FDF304 /* Views */,
 				D7CD37402A6248AD00FDF304 /* ViewModels */,
 				D7E0CB042A5CE7AF0039189D /* Controllers */,
 				D7E0CB052A5CE8960039189D /* Services */,
@@ -381,6 +394,7 @@
 				D78871332A5F8BF500E671A7 /* ITunesRecord.m in Sources */,
 				D78871422A5FC50900E671A7 /* ITunesDecoder.m in Sources */,
 				D7E0CB002A5B9DB70039189D /* HomeController.m in Sources */,
+				D7CD374B2A6279B300FDF304 /* RecordCell.m in Sources */,
 				D7E0CAC82A5B99860039189D /* AppDelegate.m in Sources */,
 				D788713B2A5F954000E671A7 /* GithubDecoder.m in Sources */,
 				D7CD37472A62728F00FDF304 /* DecodersFactory.m in Sources */,

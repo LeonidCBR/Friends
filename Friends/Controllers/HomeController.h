@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "DataProvider.h"
 #import "RecordsViewModel.h"
+#import "RecordCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
