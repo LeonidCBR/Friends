@@ -6,13 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RecordsViewModelDelegate.h"
 #import "DataProvider.h"
 #import "GithubDecoder.h"
 #import "ITunesDecoder.h"
 #import "DecodersFactory.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol RecordsViewModelDelegate;
 
 @interface RecordsViewModel : NSObject
 
@@ -27,6 +28,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loadRecordsForRecordsProviderType:(RecordsProviderType)recordsProviderType andSearhText:(NSString *)searchText;
 
 - (id<ApiRecord>)getRecordAtRow:(NSInteger)row;
+
+@end
+
+@protocol RecordsViewModelDelegate <NSObject>
+
+- (void)handleUpdatedRecordsForProvider:(RecordsProviderType)recordsProviderType search:(NSString *)searchText;
+- (void)handleError:(NSError *)error;
 
 @end
 

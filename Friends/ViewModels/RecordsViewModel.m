@@ -39,7 +39,6 @@
 }
 
 - (void)loadRecordsForRecordsProviderType:(RecordsProviderType)recordsProviderType andSearhText:(NSString *)searchText {
-    NSLog(@"TODO - loading data with search text [%@] for provider %ld...", searchText, recordsProviderType);
     __weak RecordsViewModel *weakSelf = self;
     [_dataProvider downloadDataForRecordsProviderType:recordsProviderType andSearchText:searchText completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!data) {
@@ -59,7 +58,7 @@
         NSLog(@"DEBUG: Got %lu records!", decodedRecords.count);
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf setRecords:decodedRecords];
-            [weakSelf.delegate handleUpdatedRecords];
+            [weakSelf.delegate handleUpdatedRecordsForProvider:recordsProviderType search:searchText];
         });
     }];
 }

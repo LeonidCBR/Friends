@@ -129,13 +129,21 @@
 
 #pragma mark - RecordsViewModelDelegate
 
-- (void)handleUpdatedRecords {
-    [_tableView reloadData];
-}
-
 - (void)handleError:(NSError *)error {
 #warning TODO: Show alert message with error
     NSLog(@"DEBUG: Got error! %@", error.debugDescription);
+}
+
+- (void)handleUpdatedRecordsForProvider:(RecordsProviderType)recordsProviderType search:(NSString *)searchText {
+    /// Make sure that the searching parameters is not outdated
+    RecordsProviderType currentProvider = _segmentedControl.selectedSegmentIndex;
+    if (currentProvider == recordsProviderType
+        && [_searchBar.text isEqualToString:searchText]) {
+        [_tableView reloadData];
+    } else {
+        /// Searching parameters is outdated! There is nothing to do!
+        NSLog(@"DEBUG: Searching parameters is outdated! Current:(%ld)[%@], Outdated:(%ld)[%@]", currentProvider, _searchBar.text, recordsProviderType, searchText);
+    }
 }
 
 @end

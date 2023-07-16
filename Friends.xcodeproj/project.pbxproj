@@ -19,6 +19,7 @@
 		D7CD37432A6248F100FDF304 /* RecordsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CD37422A6248F100FDF304 /* RecordsViewModel.m */; };
 		D7CD37472A62728F00FDF304 /* DecodersFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CD37462A62728F00FDF304 /* DecodersFactory.m */; };
 		D7CD374B2A6279B300FDF304 /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CD374A2A6279B300FDF304 /* RecordCell.m */; };
+		D7D9A3D32A63C81E00350C2B /* RecordsViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D9A3D22A63C81E00350C2B /* RecordsViewModelTests.m */; };
 		D7E0CAC82A5B99860039189D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAC72A5B99860039189D /* AppDelegate.m */; };
 		D7E0CACB2A5B99860039189D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CACA2A5B99860039189D /* SceneDelegate.m */; };
 		D7E0CAD32A5B998C0039189D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E0CAD22A5B998C0039189D /* Assets.xcassets */; };
@@ -69,11 +70,11 @@
 		D78871452A5FC81500E671A7 /* itunes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = itunes.json; sourceTree = "<group>"; };
 		D7CD37412A6248F100FDF304 /* RecordsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordsViewModel.h; sourceTree = "<group>"; };
 		D7CD37422A6248F100FDF304 /* RecordsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordsViewModel.m; sourceTree = "<group>"; };
-		D7CD37442A62538900FDF304 /* RecordsViewModelDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordsViewModelDelegate.h; sourceTree = "<group>"; };
 		D7CD37452A62728F00FDF304 /* DecodersFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecodersFactory.h; sourceTree = "<group>"; };
 		D7CD37462A62728F00FDF304 /* DecodersFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DecodersFactory.m; sourceTree = "<group>"; };
 		D7CD37492A6279B300FDF304 /* RecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordCell.h; sourceTree = "<group>"; };
 		D7CD374A2A6279B300FDF304 /* RecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordCell.m; sourceTree = "<group>"; };
+		D7D9A3D22A63C81E00350C2B /* RecordsViewModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordsViewModelTests.m; sourceTree = "<group>"; };
 		D7E0CAC32A5B99860039189D /* Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E0CAC62A5B99860039189D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D7E0CAC72A5B99860039189D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -138,7 +139,6 @@
 			children = (
 				D78871302A5F8AF900E671A7 /* ApiRecord.h */,
 				D78871372A5F941900E671A7 /* RecordsDecoder.h */,
-				D7CD37442A62538900FDF304 /* RecordsViewModelDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -210,6 +210,7 @@
 				D7E0CB102A5D155C0039189D /* DataProviderTests.m */,
 				D788713C2A5F96FF00E671A7 /* GithubDecoderTests.m */,
 				D78871432A5FC70200E671A7 /* ITunesDecoderTests.m */,
+				D7D9A3D22A63C81E00350C2B /* RecordsViewModelTests.m */,
 			);
 			path = FriendsTests;
 			sourceTree = "<group>";
@@ -416,6 +417,7 @@
 				D7E0CAE32A5B998D0039189D /* FriendsTests.m in Sources */,
 				D788713D2A5F96FF00E671A7 /* GithubDecoderTests.m in Sources */,
 				D78871442A5FC70200E671A7 /* ITunesDecoderTests.m in Sources */,
+				D7D9A3D32A63C81E00350C2B /* RecordsViewModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
