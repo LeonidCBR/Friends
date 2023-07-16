@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init;
 
-- (instancetype)initWithDataProvider:(DataProvider *)dataProvider;
+- (instancetype)initWithDataProvider:(id<DataProviderProtocol>)dataProvider;
 
 - (NSInteger)getRecordsCount;
 

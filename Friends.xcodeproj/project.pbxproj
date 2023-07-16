@@ -20,6 +20,7 @@
 		D7CD37472A62728F00FDF304 /* DecodersFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CD37462A62728F00FDF304 /* DecodersFactory.m */; };
 		D7CD374B2A6279B300FDF304 /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CD374A2A6279B300FDF304 /* RecordCell.m */; };
 		D7D9A3D32A63C81E00350C2B /* RecordsViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D9A3D22A63C81E00350C2B /* RecordsViewModelTests.m */; };
+		D7D9A3D72A63EAFB00350C2B /* MockDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D9A3D62A63EAFB00350C2B /* MockDataProvider.m */; };
 		D7E0CAC82A5B99860039189D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAC72A5B99860039189D /* AppDelegate.m */; };
 		D7E0CACB2A5B99860039189D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CACA2A5B99860039189D /* SceneDelegate.m */; };
 		D7E0CAD32A5B998C0039189D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E0CAD22A5B998C0039189D /* Assets.xcassets */; };
@@ -75,6 +76,9 @@
 		D7CD37492A6279B300FDF304 /* RecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordCell.h; sourceTree = "<group>"; };
 		D7CD374A2A6279B300FDF304 /* RecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordCell.m; sourceTree = "<group>"; };
 		D7D9A3D22A63C81E00350C2B /* RecordsViewModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordsViewModelTests.m; sourceTree = "<group>"; };
+		D7D9A3D52A63EAFB00350C2B /* MockDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MockDataProvider.h; sourceTree = "<group>"; };
+		D7D9A3D62A63EAFB00350C2B /* MockDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MockDataProvider.m; sourceTree = "<group>"; };
+		D7D9A3D82A63EB2600350C2B /* DataProviderProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataProviderProtocol.h; sourceTree = "<group>"; };
 		D7E0CAC32A5B99860039189D /* Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E0CAC62A5B99860039189D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D7E0CAC72A5B99860039189D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 			children = (
 				D78871302A5F8AF900E671A7 /* ApiRecord.h */,
 				D78871372A5F941900E671A7 /* RecordsDecoder.h */,
+				D7D9A3D82A63EB2600350C2B /* DataProviderProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -257,6 +262,8 @@
 				D7E0CB142A5D40AF0039189D /* MockURLProtocol.m */,
 				D788713E2A5FAAA400E671A7 /* github.json */,
 				D78871452A5FC81500E671A7 /* itunes.json */,
+				D7D9A3D52A63EAFB00350C2B /* MockDataProvider.h */,
+				D7D9A3D62A63EAFB00350C2B /* MockDataProvider.m */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -417,6 +424,7 @@
 				D7E0CAE32A5B998D0039189D /* FriendsTests.m in Sources */,
 				D788713D2A5F96FF00E671A7 /* GithubDecoderTests.m in Sources */,
 				D78871442A5FC70200E671A7 /* ITunesDecoderTests.m in Sources */,
+				D7D9A3D72A63EAFB00350C2B /* MockDataProvider.m in Sources */,
 				D7D9A3D32A63C81E00350C2B /* RecordsViewModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

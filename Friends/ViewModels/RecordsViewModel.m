@@ -9,7 +9,7 @@
 
 @interface RecordsViewModel()
 
-@property (strong, nonatomic) DataProvider *dataProvider;
+@property (strong, nonatomic) id<DataProviderProtocol> dataProvider;
 @property (strong, nonatomic) NSArray<id<ApiRecord>> *records;
 
 @end
@@ -25,7 +25,7 @@
     return self;
 }
 
-- (instancetype)initWithDataProvider:(DataProvider *)dataProvider {
+- (instancetype)initWithDataProvider:(id<DataProviderProtocol>)dataProvider {
     self = [super init];
     if (self) {
         _dataProvider = dataProvider;

@@ -7,12 +7,11 @@
 
 #import <XCTest/XCTest.h>
 #import "RecordsViewModel.h"
+#import "MockDataProvider.h"
 
 @interface RecordsViewModelTests : XCTestCase <RecordsViewModelDelegate>
 
 @property (strong, nonatomic) RecordsViewModel *sut;
-//@property (strong, nonatomic) NSString *search;
-//@property (nonatomic) RecordsProviderType provider;
 @property (strong, nonatomic) XCTestExpectation *expectation;
 
 @end
@@ -20,7 +19,14 @@
 @implementation RecordsViewModelTests
 
 - (void)setUp {
-    _sut = [RecordsViewModel new];
+    MockDataProvider *mockDataProvider = [MockDataProvider new];
+    NSBundle *bundle = [NSBundle bundleForClass:[RecordsViewModelTests class]];
+    NSURL *jsonUrl = [bundle URLForResource:@"github" withExtension:@"json"];
+    NSData *jsonData = [[NSData alloc] initWithContentsOfURL:jsonUrl];
+    mockDataProvider.shouldReturnData = jsonData;
+    mockDataProvider.shouldReturnResponse = nil;
+    mockDataProvider.shouldReturnError = nil;
+    _sut = [[RecordsViewModel alloc] initWithDataProvider:mockDataProvider];
     _sut.delegate = self;
 }
 
@@ -31,8 +37,6 @@
 - (void)testRecordsViewModel_WhenLoadRecords_ShouldCallDelegateHandle {
     RecordsProviderType provider = gitHub;
     NSString *search = @"LeonidC";
-//    _provider = gitHub;
-//    _search = @"LeonidC";
     _expectation = [self expectationWithDescription:@"RecordsViewModel Delegate Handle Expectation"];
     [_sut loadRecordsForRecordsProviderType:provider andSearhText:search];
     [self waitForExpectations:[[NSArray alloc] initWithObjects:_expectation, nil] timeout:5];
@@ -52,9 +56,6 @@
 }
 
 - (void)handleUpdatedRecordsForProvider:(RecordsProviderType)recordsProviderType search:(NSString *)searchText {
-//    NSLog(@"DEBUG: RecordsViewModelTests[%@, %ld] delegate calls handle records with search %@ for %ld", _search, _provider, searchText, recordsProviderType);
-//    XCTAssertEqualObjects(_search, searchText);
-//    XCTAssertEqual(_provider, recordsProviderType);
     [_expectation fulfill];
     _expectation = nil;
 }
