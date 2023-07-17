@@ -9,7 +9,6 @@
 #define ITEMS_COUNT @"resultCount"
 
 #import "ITunesDecoder.h"
-#import "ITunesRecord.h"
 
 @implementation ITunesDecoder
 

@@ -28,6 +28,7 @@
     mockDataProvider.shouldReturnError = nil;
     _sut = [[RecordsViewModel alloc] initWithDataProvider:mockDataProvider];
     _sut.delegate = self;
+    _expectation = nil;
 }
 
 - (void)tearDown {
@@ -50,6 +51,19 @@
     XCTAssertEqualObjects(record.label, @"https://api.github.com/users/LeonidCBR");
     XCTAssertEqualObjects([record.icon absoluteString], @"https://avatars.githubusercontent.com/u/44451063?v=4");
 }
+
+- (void)testRecordsViewModel_WhenAskGithubAlignment_ShouldReturnValidValue {
+    RecordsProviderType provider = gitHub;
+    NSString *search = @"LeonidC";
+    _expectation = [self expectationWithDescription:@"RecordsViewModel Get Alignment Expectation"];
+    [_sut loadRecordsForRecordsProviderType:provider andSearhText:search];
+    [self waitForExpectations:[[NSArray alloc] initWithObjects:_expectation, nil] timeout:5];
+    XCTAssertEqual([_sut getAlignmentAtRow:0], left);
+    XCTAssertEqual([_sut getAlignmentAtRow:1], right);
+    XCTAssertEqual([_sut getAlignmentAtRow:2], left);
+}
+
+#pragma mark - RecordsViewModelDelegate
 
 - (void)handleError:(nonnull NSError *)error {
     NSLog(@"DEBUG: RecordsViewModelTests delegate handleError: %@", error);

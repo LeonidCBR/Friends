@@ -69,6 +69,7 @@
 		D78871412A5FC50900E671A7 /* ITunesDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITunesDecoder.m; sourceTree = "<group>"; };
 		D78871432A5FC70200E671A7 /* ITunesDecoderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITunesDecoderTests.m; sourceTree = "<group>"; };
 		D78871452A5FC81500E671A7 /* itunes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = itunes.json; sourceTree = "<group>"; };
+		D7BF21382A64CDC40078FFC2 /* Alignment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alignment.h; sourceTree = "<group>"; };
 		D7CD37412A6248F100FDF304 /* RecordsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordsViewModel.h; sourceTree = "<group>"; };
 		D7CD37422A6248F100FDF304 /* RecordsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordsViewModel.m; sourceTree = "<group>"; };
 		D7CD37452A62728F00FDF304 /* DecodersFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecodersFactory.h; sourceTree = "<group>"; };
@@ -134,6 +135,7 @@
 				D78871322A5F8BF400E671A7 /* ITunesRecord.m */,
 				D78871342A5F928400E671A7 /* GithubRecord.h */,
 				D78871352A5F928400E671A7 /* GithubRecord.m */,
+				D7BF21382A64CDC40078FFC2 /* Alignment.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";

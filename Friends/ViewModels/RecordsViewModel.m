@@ -21,6 +21,21 @@
     if (self) {
         _dataProvider = [DataProvider new];
         _records = @[];
+
+#warning FOR TEST
+        /*
+//
+//        GithubRecord *rec1 = [[GithubRecord alloc]initWithLogin:@"login 1" account:@"account 1" avatar:@"avatar 1"];
+//        GithubRecord *rec2 = [[GithubRecord alloc]initWithLogin:@"login 2" account:@"account 2" avatar:@"avatar 2"];
+//        GithubRecord *rec3 = [[GithubRecord alloc]initWithLogin:@"login 3" account:@"account 3" avatar:@"avatar 3"];
+
+        ITunesRecord *rec1 = [[ITunesRecord alloc] initWithArtist:@"1 Reformed gangster and wrestler Ricky and his wife Julia make a living performing with their children Saraya and Zak." track:@"1 When brother and sister get the chance to audition for WWE, it seems the family dream is coming true but they are about to learn that becoming a WWE Superstar demands more than they ever imagined possible." artwork:@"artwork 1"];
+        ITunesRecord *rec2 = [[ITunesRecord alloc] initWithArtist:@"2 Reformed gangster and wrestler Ricky and his wife Julia make a living performing with their children Saraya and Zak." track:@"2 When brother and sister get the chance to audition for WWE, it seems the family dream is coming true but they are about to learn that becoming a WWE Superstar demands more than they ever imagined possible." artwork:@"artwork 2"];
+        ITunesRecord *rec3 = [[ITunesRecord alloc] initWithArtist:@"artist 3" track:@"track 3" artwork:@"artwork 3"];
+
+        _records = @[rec1, rec2, rec3];
+*/
+
     }
     return self;
 }
@@ -68,6 +83,26 @@
         return nil;
     }
     return [_records objectAtIndex:row];
+}
+
+- (Alignment)getAlignmentAtRow:(NSInteger)row {
+    id<ApiRecord> record = [_records objectAtIndex:row];
+    if ([record isKindOfClass:[GithubRecord class]]) {
+        if (row % 2 == 0) {
+            return left;
+        } else {
+            return right;
+        }
+    } else if ([record isKindOfClass:[ITunesRecord class]]) {
+        if (row % 2 == 0) {
+            return right;
+        } else {
+            return left;
+        }
+    } else {
+        /// Return default value
+        return left;
+    }
 }
 
 @end

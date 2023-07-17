@@ -124,6 +124,8 @@
     id<ApiRecord> record = [_recordsViewModel getRecordAtRow:indexPath.row];
     [cell setUserName:record.user];
     [cell setDescription:record.label];
+    Alignment alignment = [_recordsViewModel getAlignmentAtRow:indexPath.row];
+    [cell updateUIWithAlignment:alignment];
     return cell;
 }
 

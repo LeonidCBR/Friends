@@ -10,6 +10,7 @@
 #import "GithubDecoder.h"
 #import "ITunesDecoder.h"
 #import "DecodersFactory.h"
+#import "Alignment.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loadRecordsForRecordsProviderType:(RecordsProviderType)recordsProviderType andSearhText:(NSString *)searchText;
 
 - (id<ApiRecord>)getRecordAtRow:(NSInteger)row;
+
+- (Alignment)getAlignmentAtRow:(NSInteger)row;
 
 @end
 

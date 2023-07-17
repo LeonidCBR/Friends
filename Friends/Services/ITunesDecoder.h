@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "RecordsDecoder.h"
 #import "BaseDecoder.h"
+#import "ITunesRecord.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

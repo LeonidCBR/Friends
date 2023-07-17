@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Alignment.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUserName:(NSString *)userName;
 
 - (void)setDescription:(NSString *)description;
+
+-(void)updateUIWithAlignment:(Alignment)alignment;
 
 @end
 

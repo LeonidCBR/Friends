@@ -10,8 +10,14 @@
 @interface RecordCell ()
 
 @property (strong, nonatomic) UILabel *userLabel;
-@property (strong, nonatomic) UILabel *DescriptionLabel;
+@property (strong, nonatomic) UILabel *descriptionLabel;
 @property (strong, nonatomic) UIImageView *iconImageView;
+@property (nonatomic) Alignment alignment;
+@property (strong, nonatomic) NSLayoutConstraint *iconWithContentViewConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *userLabelWithIconConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *iconWithDescriptionLabelConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *userLabelWithContentViewConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *descriptionLabelWithContentViewConstraint;
 
 @end
 
@@ -21,8 +27,14 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         _userLabel = [UILabel new];
-        _DescriptionLabel = [UILabel new];
+        _descriptionLabel = [UILabel new];
         _iconImageView = [UIImageView new];
+        _iconWithContentViewConstraint = nil;
+        _userLabelWithIconConstraint = nil;
+        _iconWithDescriptionLabelConstraint = nil;
+        _userLabelWithContentViewConstraint = nil;
+        _descriptionLabelWithContentViewConstraint = nil;
+        _alignment = none;
         [self configureUI];
     }
     return self;
@@ -32,49 +44,44 @@
     self.clipsToBounds = YES;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self configureIcon];
-    [self configureUser];
-    [self configureLabel];
+    [self configureUserLabel];
+    [self configureDescriptionLabel];
+    [self configureBasicConstraints];
+
+#warning FOR TEST
+//    _alignment = left;
+//    [self setLeftAlign];
 }
 
 - (void)configureIcon {
-//    _iconImageView.backgroundColor = [UIColor lightGrayColor];
+    _iconImageView.backgroundColor = [UIColor lightGrayColor];
     [self.contentView addSubview:_iconImageView];
     _iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
+}
+
+- (void)configureUserLabel {
+    _userLabel.numberOfLines = 0;
+    [self.contentView addSubview:_userLabel];
+    _userLabel.translatesAutoresizingMaskIntoConstraints = NO;
+}
+
+- (void)configureDescriptionLabel {
+    _descriptionLabel.numberOfLines = 0;
+    [self.contentView addSubview:_descriptionLabel];
+    _descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
+}
+
+- (void)configureBasicConstraints {
     [NSLayoutConstraint activateConstraints:
          [[NSArray alloc] initWithObjects:
-          [_iconImageView.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor constant:8],
           [_iconImageView.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor],
           [_iconImageView.widthAnchor constraintEqualToConstant:60.0],
           [_iconImageView.heightAnchor constraintEqualToConstant:60.0],
           [_iconImageView.topAnchor constraintGreaterThanOrEqualToAnchor:self.contentView.topAnchor constant:8.0],
           [_iconImageView.bottomAnchor constraintLessThanOrEqualToAnchor:self.contentView.bottomAnchor constant:-8.0],
-          nil]
-    ];
-}
-
-- (void)configureUser {
-    _userLabel.numberOfLines = 0;
-    [self.contentView addSubview:_userLabel];
-    _userLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [NSLayoutConstraint activateConstraints:
-         [[NSArray alloc] initWithObjects:
           [_userLabel.topAnchor constraintEqualToAnchor:self.contentView.topAnchor constant:12.0],
-          [_userLabel.leadingAnchor constraintEqualToAnchor:_iconImageView.trailingAnchor constant:16.0],
-          [_userLabel.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor constant:-16.0],
-          nil]
-    ];
-}
-
-- (void)configureLabel {
-    _DescriptionLabel.numberOfLines = 0;
-    [self.contentView addSubview:_DescriptionLabel];
-    _DescriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [NSLayoutConstraint activateConstraints:
-         [[NSArray alloc] initWithObjects:
-          [_DescriptionLabel.topAnchor constraintEqualToAnchor:_userLabel.bottomAnchor constant:12.0],
-          [_DescriptionLabel.leadingAnchor constraintEqualToAnchor:_iconImageView.trailingAnchor constant:16.0],
-          [_DescriptionLabel.bottomAnchor constraintLessThanOrEqualToAnchor:self.contentView.bottomAnchor constant:-12.0],
-          [_DescriptionLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.contentView.trailingAnchor constant:-16.0],
+          [_descriptionLabel.topAnchor constraintGreaterThanOrEqualToAnchor:_userLabel.bottomAnchor constant:12.0],
+          [_descriptionLabel.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor constant:-12.0],
           nil]
     ];
 }
@@ -84,7 +91,103 @@
 }
 
 - (void)setDescription:(NSString *)description {
-    _DescriptionLabel.text = description;
+    _descriptionLabel.text = description;
+}
+
+- (void)updateUIWithAlignment:(Alignment)alignment {
+    if (_alignment == alignment) {
+        return;
+    } else {
+        _alignment = alignment;
+        switch (_alignment) {
+            case left:
+                [self setLeftAlign];
+                break;
+            case right:
+                [self setRightAlign];
+            default:
+                break;
+        }
+    }
+}
+
+#pragma mark - Left Alignment
+
+- (void)setLeftAlign {
+    /// Icon
+    if ([_iconWithContentViewConstraint isActive]) {
+        [_iconWithContentViewConstraint setActive:NO];
+    }
+    _iconWithContentViewConstraint = [NSLayoutConstraint constraintWithItem:_iconImageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:8.0];
+    [_iconWithContentViewConstraint setActive:YES];
+
+    /// User label
+    [_userLabel setTextAlignment:NSTextAlignmentLeft];
+    if ([_userLabelWithIconConstraint isActive]) {
+        [_userLabelWithIconConstraint setActive:NO];
+    }
+    _userLabelWithIconConstraint = [NSLayoutConstraint constraintWithItem:_userLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_iconImageView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:16.0];
+    [_userLabelWithIconConstraint setActive:YES];
+
+    if ([_userLabelWithContentViewConstraint isActive]) {
+        [_userLabelWithContentViewConstraint setActive:NO];
+    }
+    _userLabelWithContentViewConstraint = [NSLayoutConstraint constraintWithItem:_userLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-16.0];
+    [_userLabelWithContentViewConstraint setActive:YES];
+
+    /// Description label
+    [_descriptionLabel setTextAlignment:NSTextAlignmentLeft];
+    if ([_iconWithDescriptionLabelConstraint isActive]) {
+        [_iconWithDescriptionLabelConstraint setActive:NO];
+    }
+    _iconWithDescriptionLabelConstraint = [NSLayoutConstraint constraintWithItem:_iconImageView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:_descriptionLabel attribute:NSLayoutAttributeLeading multiplier:1.0 constant:-16.0];
+    [_iconWithDescriptionLabelConstraint setActive:YES];
+    if ([_descriptionLabelWithContentViewConstraint isActive]) {
+        [_descriptionLabelWithContentViewConstraint setActive:NO];
+    }
+    _descriptionLabelWithContentViewConstraint = [NSLayoutConstraint constraintWithItem:_descriptionLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-16.0];
+    [_descriptionLabelWithContentViewConstraint setActive:YES];
+    [self setNeedsLayout];
+}
+
+#pragma mark - Right Alignment
+
+- (void)setRightAlign {
+    /// Icon
+    if ([_iconWithContentViewConstraint isActive]) {
+        [_iconWithContentViewConstraint setActive:NO];
+    }
+    _iconWithContentViewConstraint = [NSLayoutConstraint constraintWithItem:_iconImageView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-16.0];
+    [_iconWithContentViewConstraint setActive:YES];
+
+    /// User label
+    [_userLabel setTextAlignment:NSTextAlignmentRight];
+    if ([_userLabelWithIconConstraint isActive]) {
+        [_userLabelWithIconConstraint setActive:NO];
+    }
+    _userLabelWithIconConstraint = [NSLayoutConstraint constraintWithItem:_userLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:_iconImageView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:-16.0];
+    [_userLabelWithIconConstraint setActive:YES];
+
+    if ([_userLabelWithContentViewConstraint isActive]) {
+        [_userLabelWithContentViewConstraint setActive:NO];
+    }
+    _userLabelWithContentViewConstraint = [NSLayoutConstraint constraintWithItem:_userLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:16.0];
+    [_userLabelWithContentViewConstraint setActive:YES];
+
+    /// Description label
+    [_descriptionLabel setTextAlignment:NSTextAlignmentRight];
+    if ([_descriptionLabelWithContentViewConstraint isActive]) {
+        [_descriptionLabelWithContentViewConstraint setActive:NO];
+    }
+    _descriptionLabelWithContentViewConstraint = [NSLayoutConstraint constraintWithItem:_descriptionLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:16.0];
+    [_descriptionLabelWithContentViewConstraint setActive:YES];
+
+    if ([_iconWithDescriptionLabelConstraint isActive]) {
+        [_iconWithDescriptionLabelConstraint setActive:NO];
+    }
+    _iconWithDescriptionLabelConstraint = [NSLayoutConstraint constraintWithItem:_iconImageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_descriptionLabel attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:16.0];
+    [_iconWithDescriptionLabelConstraint setActive:YES];
+    [self setNeedsLayout];
 }
 
 @end
