@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString * _Nonnull)label;
 
-//- (NSURL * _Nullable)icon;
 - (NSString * _Nullable)iconPath;
 
 @end

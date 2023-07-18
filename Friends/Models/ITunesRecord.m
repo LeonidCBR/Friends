@@ -35,9 +35,6 @@
     return _track;
 }
 
-//- (NSURL * _Nullable)icon {
-//    return [NSURL URLWithString:_artwork];
-//}
 - (NSString * _Nullable)iconPath {
     return _artwork;
 }

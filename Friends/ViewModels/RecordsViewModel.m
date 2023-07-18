@@ -48,14 +48,12 @@
                 });
             } else {
                 // main queue
-#warning TODO: throw error
-                // [weakSelf handleError:[NSError new! - unexpected error]]
-                NSLog(@"DEBUG: There is neither data nor error");
+#warning TODO: throw unexpected error
+                // [weakSelf handleError:[NSError new! -  error]]
             }
         }
         id<RecordsDecoder> recordsDecoder = [DecodersFactory getDecoderForRecordsProviderType:recordsProviderType];
         NSArray *decodedRecords = [recordsDecoder decode:data];
-        NSLog(@"DEBUG: Got %lu records!", decodedRecords.count);
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf setRecords:decodedRecords];
             [weakSelf.delegate handleUpdatedRecordsForProvider:recordsProviderType search:searchText];

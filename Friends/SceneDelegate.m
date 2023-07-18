@@ -16,21 +16,6 @@
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     _window = [[UIWindow alloc] initWithWindowScene:(UIWindowScene *)scene];
-
-/*
- NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
- configuration.timeoutIntervalForResource = 300; // 5 mins
- if (@available(iOS 11.0, *)) {
-     configuration.waitsForConnectivity = YES;
- }
-
- NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:nil];
-
- DataProvider *dataProvider = [DataProvider alloc] initWithUrlSession:urlSession;
- ImageProvider *imageProvider = [ImageProvider alloc] initWithDataProvider: dataProvider;
- recordsVM = RecordsViewModel.init(with dataProvider, imageProvider);
- homeController = HomeContoller(recordsVM);
- */
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     configuration.timeoutIntervalForResource = 300; // 5 mins
     configuration.waitsForConnectivity = YES;

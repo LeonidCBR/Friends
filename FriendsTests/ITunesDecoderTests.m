@@ -39,7 +39,7 @@
     ITunesRecord *itunesRecord = [itunesRecords objectAtIndex:3];
     XCTAssertEqualObjects(itunesRecord.user, @"Jake Kasdan");
     XCTAssertEqualObjects(itunesRecord.label, @"Jumanji: The Next Level");
-    XCTAssertEqualObjects([itunesRecord.icon absoluteString], @"https://is3-ssl.mzstatic.com/image/thumb/Video114/v4/1d/50/26/1d502647-3349-738d-af07-f8714b9ffa8a/pr_source.lsr/100x100bb.jpg");
+    XCTAssertEqualObjects(itunesRecord.iconPath, @"https://is3-ssl.mzstatic.com/image/thumb/Video114/v4/1d/50/26/1d502647-3349-738d-af07-f8714b9ffa8a/pr_source.lsr/100x100bb.jpg");
 }
 
 - (void)testPerformanceExample {

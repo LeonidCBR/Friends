@@ -35,9 +35,6 @@
     return _account;
 }
 
-//- (NSURL * _Nullable)icon {
-//    return [NSURL URLWithString:_avatar];
-//}
 - (NSString * _Nullable)iconPath {
     return _avatar;
 }

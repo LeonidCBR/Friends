@@ -127,11 +127,12 @@
     [cell setUserName:record.user];
     [cell setDescription:record.label];
     [cell setIconImagePath:record.iconPath];
-    if (record.iconPath) {
+    if (record.iconPath && [record.iconPath length] > 0) {
         __weak RecordCell *weakCell = cell;
         [_imageProvider getImageWithPath:record.iconPath completionHandler:^(UIImage * _Nullable image, NSString * _Nonnull imagePath, NSError * _Nullable error) {
-//            if ([weakCell.icon absoluteString] == imagePath) {
-            // check weakCell.icon absoluteString
+            if (!image) {
+                return;
+            }
             if ([[weakCell iconImagePath] isEqualToString:imagePath]) {
                 [weakCell setIconImage:image];
             }

@@ -49,7 +49,7 @@
     id<ApiRecord> record = [_sut getRecordAtRow:9];
     XCTAssertEqualObjects(record.user, @"LeonidCBR");
     XCTAssertEqualObjects(record.label, @"https://api.github.com/users/LeonidCBR");
-    XCTAssertEqualObjects([record.icon absoluteString], @"https://avatars.githubusercontent.com/u/44451063?v=4");
+    XCTAssertEqualObjects(record.iconPath, @"https://avatars.githubusercontent.com/u/44451063?v=4");
 }
 
 - (void)testRecordsViewModel_WhenAskGithubAlignment_ShouldReturnValidValue {
@@ -66,6 +66,7 @@
 #pragma mark - RecordsViewModelDelegate
 
 - (void)handleError:(nonnull NSError *)error {
+#warning Create test case
     NSLog(@"DEBUG: RecordsViewModelTests delegate handleError: %@", error);
 }
 

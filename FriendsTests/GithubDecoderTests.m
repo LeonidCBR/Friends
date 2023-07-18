@@ -39,7 +39,7 @@
     GithubRecord *githubRecord = [githubRecords objectAtIndex:9];
     XCTAssertEqualObjects(githubRecord.user, @"LeonidCBR");
     XCTAssertEqualObjects(githubRecord.label, @"https://api.github.com/users/LeonidCBR");
-    XCTAssertEqualObjects([githubRecord.icon absoluteString], @"https://avatars.githubusercontent.com/u/44451063?v=4");
+    XCTAssertEqualObjects(githubRecord.iconPath, @"https://avatars.githubusercontent.com/u/44451063?v=4");
 }
 
 - (void)testPerformanceExample {
