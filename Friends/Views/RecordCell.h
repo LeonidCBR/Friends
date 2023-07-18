@@ -12,9 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RecordCell : UITableViewCell
 
+@property (strong, nonatomic) NSString *iconImagePath;
+
 - (void)setUserName:(NSString *)userName;
 
 - (void)setDescription:(NSString *)description;
+
+- (void)setIconImage:(UIImage *)iconImage;
 
 -(void)updateUIWithAlignment:(Alignment)alignment;
 

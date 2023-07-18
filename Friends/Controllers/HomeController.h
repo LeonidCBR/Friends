@@ -8,13 +8,14 @@
 #import <UIKit/UIKit.h>
 #import "DataProvider.h"
 #import "RecordsViewModel.h"
+#import "ImageProvider.h"
 #import "RecordCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, RecordsViewModelDelegate>
 
-- (instancetype)initWithRecordsViewModel:(RecordsViewModel *)recordsViewModel;
+- (instancetype)initWithRecordsViewModel:(RecordsViewModel *)recordsViewModel andImageProvider:(ImageProvider *)imageProvider;
 
 @end
 

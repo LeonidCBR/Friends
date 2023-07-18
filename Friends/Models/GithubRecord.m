@@ -27,16 +27,19 @@
     return self;
 }
 
-- (nonnull NSString *)user {
+- (NSString * _Nonnull)user {
     return _login;
 }
 
-- (nonnull NSString *)label { 
+- (NSString * _Nonnull)label {
     return _account;
 }
 
-- (NSURL *)icon {
-    return [NSURL URLWithString:_avatar];
+//- (NSURL * _Nullable)icon {
+//    return [NSURL URLWithString:_avatar];
+//}
+- (NSString * _Nullable)iconPath {
+    return _avatar;
 }
 
 @end

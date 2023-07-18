@@ -12,6 +12,7 @@
 @interface HomeController ()
 
 @property (strong, nonatomic) RecordsViewModel *recordsViewModel;
+@property (strong, nonatomic) ImageProvider *imageProvider;
 @property (strong, nonatomic) UISegmentedControl *segmentedControl;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) UITableView *tableView;
@@ -20,10 +21,11 @@
 
 @implementation HomeController
 
-- (instancetype)initWithRecordsViewModel:(RecordsViewModel *)recordsViewModel {
+- (instancetype)initWithRecordsViewModel:(RecordsViewModel *)recordsViewModel andImageProvider:(ImageProvider *)imageProvider {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _recordsViewModel = recordsViewModel;
+        _imageProvider = imageProvider;
     }
     return self;
 }
@@ -124,6 +126,17 @@
     id<ApiRecord> record = [_recordsViewModel getRecordAtRow:indexPath.row];
     [cell setUserName:record.user];
     [cell setDescription:record.label];
+    [cell setIconImagePath:record.iconPath];
+    if (record.iconPath) {
+        __weak RecordCell *weakCell = cell;
+        [_imageProvider getImageWithPath:record.iconPath completionHandler:^(UIImage * _Nullable image, NSString * _Nonnull imagePath, NSError * _Nullable error) {
+//            if ([weakCell.icon absoluteString] == imagePath) {
+            // check weakCell.icon absoluteString
+            if ([[weakCell iconImagePath] isEqualToString:imagePath]) {
+                [weakCell setIconImage:image];
+            }
+        }];
+    }
     Alignment alignment = [_recordsViewModel getAlignmentAtRow:indexPath.row];
     [cell updateUIWithAlignment:alignment];
     return cell;

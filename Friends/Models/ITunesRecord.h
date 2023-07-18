@@ -14,11 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithArtist:(NSString *)artist track:(NSString *)track artwork:(NSString *)artwork;
 
-- (nonnull NSString *)user;
+- (NSString * _Nonnull)user;
 
-- (nonnull NSString *)label;
+- (NSString * _Nonnull)label;
 
-- (NSURL *)icon;
+//- (NSURL * _Nullable)icon;
+- (NSString * _Nullable)iconPath;
 
 @end
 

@@ -16,8 +16,29 @@
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     _window = [[UIWindow alloc] initWithWindowScene:(UIWindowScene *)scene];
-    RecordsViewModel *recordsVM = [RecordsViewModel new];
-    HomeController *homeController = [[HomeController alloc] initWithRecordsViewModel:recordsVM];
+
+/*
+ NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+ configuration.timeoutIntervalForResource = 300; // 5 mins
+ if (@available(iOS 11.0, *)) {
+     configuration.waitsForConnectivity = YES;
+ }
+
+ NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:nil];
+
+ DataProvider *dataProvider = [DataProvider alloc] initWithUrlSession:urlSession;
+ ImageProvider *imageProvider = [ImageProvider alloc] initWithDataProvider: dataProvider;
+ recordsVM = RecordsViewModel.init(with dataProvider, imageProvider);
+ homeController = HomeContoller(recordsVM);
+ */
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    configuration.timeoutIntervalForResource = 300; // 5 mins
+    configuration.waitsForConnectivity = YES;
+    NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:nil];
+    ImageProvider *imageProvider = [[ImageProvider alloc] initWithUrlSession:urlSession];
+    DataProvider *dataProvider = [[DataProvider alloc] initWithUrlSession:urlSession];
+    RecordsViewModel *recordsVM = [[RecordsViewModel alloc] initWithDataProvider:dataProvider];
+    HomeController *homeController = [[HomeController alloc] initWithRecordsViewModel:recordsVM andImageProvider:imageProvider];
     _window.rootViewController = [[UINavigationController alloc] initWithRootViewController:homeController];
     [_window makeKeyAndVisible];
 }

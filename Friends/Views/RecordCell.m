@@ -90,6 +90,10 @@
     _descriptionLabel.text = description;
 }
 
+- (void)setIconImage:(UIImage *)iconImage {
+    [_iconImageView setImage:iconImage];
+}
+
 - (void)updateUIWithAlignment:(Alignment)alignment {
     if (_alignment == alignment) {
         return;

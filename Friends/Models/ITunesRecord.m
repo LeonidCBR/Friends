@@ -27,16 +27,19 @@
     return self;
 }
 
-- (nonnull NSString *)user {
+- (NSString * _Nonnull)user {
     return _artist;
 }
 
-- (nonnull NSString *)label {
+- (NSString * _Nonnull)label {
     return _track;
 }
 
-- (NSURL *)icon {
-    return [NSURL URLWithString:_artwork];
+//- (NSURL * _Nullable)icon {
+//    return [NSURL URLWithString:_artwork];
+//}
+- (NSString * _Nullable)iconPath {
+    return _artwork;
 }
 
 @end

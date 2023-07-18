@@ -11,11 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ApiRecord <NSObject>
 
-- (nonnull NSString *)user;
+- (NSString * _Nonnull)user;
 
-- (nonnull NSString *)label;
+- (NSString * _Nonnull)label;
 
-- (NSURL *)icon;
+//- (NSURL * _Nullable)icon;
+- (NSString * _Nullable)iconPath;
 
 @end
 

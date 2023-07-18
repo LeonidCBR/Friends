@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D75DD8942A6004690016D73C /* BaseDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D75DD8932A6004690016D73C /* BaseDecoder.m */; };
+		D75FEC082A6618E000213A11 /* ImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D75FEC072A6618E000213A11 /* ImageProvider.m */; };
 		D78871332A5F8BF500E671A7 /* ITunesRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871322A5F8BF400E671A7 /* ITunesRecord.m */; };
 		D78871362A5F928400E671A7 /* GithubRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871352A5F928400E671A7 /* GithubRecord.m */; };
 		D788713B2A5F954000E671A7 /* GithubDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D788713A2A5F954000E671A7 /* GithubDecoder.m */; };
@@ -55,6 +56,8 @@
 /* Begin PBXFileReference section */
 		D75DD8922A6004690016D73C /* BaseDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDecoder.h; sourceTree = "<group>"; };
 		D75DD8932A6004690016D73C /* BaseDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDecoder.m; sourceTree = "<group>"; };
+		D75FEC062A6618E000213A11 /* ImageProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageProvider.h; sourceTree = "<group>"; };
+		D75FEC072A6618E000213A11 /* ImageProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageProvider.m; sourceTree = "<group>"; };
 		D78871302A5F8AF900E671A7 /* ApiRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiRecord.h; sourceTree = "<group>"; };
 		D78871312A5F8BF400E671A7 /* ITunesRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITunesRecord.h; sourceTree = "<group>"; };
 		D78871322A5F8BF400E671A7 /* ITunesRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITunesRecord.m; sourceTree = "<group>"; };
@@ -253,6 +256,8 @@
 				D78871412A5FC50900E671A7 /* ITunesDecoder.m */,
 				D7CD37452A62728F00FDF304 /* DecodersFactory.h */,
 				D7CD37462A62728F00FDF304 /* DecodersFactory.m */,
+				D75FEC062A6618E000213A11 /* ImageProvider.h */,
+				D75FEC072A6618E000213A11 /* ImageProvider.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 				D78871422A5FC50900E671A7 /* ITunesDecoder.m in Sources */,
 				D7E0CB002A5B9DB70039189D /* HomeController.m in Sources */,
 				D7CD374B2A6279B300FDF304 /* RecordCell.m in Sources */,
+				D75FEC082A6618E000213A11 /* ImageProvider.m in Sources */,
 				D7E0CAC82A5B99860039189D /* AppDelegate.m in Sources */,
 				D788713B2A5F954000E671A7 /* GithubDecoder.m in Sources */,
 				D7CD37472A62728F00FDF304 /* DecodersFactory.m in Sources */,
