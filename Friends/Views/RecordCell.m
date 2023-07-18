@@ -41,7 +41,11 @@
 }
 
 - (void)configureUI {
-    self.clipsToBounds = YES;
+#warning ClipsToBounds
+//    self.clipsToBounds = YES;
+    self.clipsToBounds = NO;
+
+
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self configureIcon];
     [self configureUserLabel];
@@ -50,9 +54,16 @@
 }
 
 - (void)configureIcon {
+#warning ClipsToBounds
+    [_iconImageView setClipsToBounds:NO];
+
+
     _iconImageView.backgroundColor = [UIColor lightGrayColor];
     [self.contentView addSubview:_iconImageView];
     _iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [_iconImageView setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleIconTap:)];
+    [_iconImageView addGestureRecognizer:tap];
 }
 
 - (void)configureUserLabel {
@@ -90,7 +101,7 @@
     _descriptionLabel.text = description;
 }
 
-- (void)setIconImage:(UIImage *)iconImage {
+- (void)setIconImage:(UIImage * _Nullable)iconImage {
     [_iconImageView setImage:iconImage];
 }
 
@@ -108,6 +119,16 @@
             default:
                 break;
         }
+    }
+}
+
+- (void)handleIconTap:(UITapGestureRecognizer *)tapGestureRecognizer {
+    if (tapGestureRecognizer
+        && (tapGestureRecognizer.view)
+        && [tapGestureRecognizer.view isMemberOfClass:[UIImageView class]]) {
+        UIImageView *tappedImage = (UIImageView *)tapGestureRecognizer.view;
+//        [_delegate handleIconTapForImage:tappedImage.image];
+        [_delegate handleTapForImageView:tappedImage];
     }
 }
 

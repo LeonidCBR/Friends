@@ -20,6 +20,7 @@
 - (instancetype)initWithLogin:(NSString *)login account:(NSString *)account avatar:(NSString *)avatar {
     self = [super init];
     if (self) {
+#warning TODO: set propetries to empty string if get null
         _login = login;
         _account = account;
         _avatar = avatar;

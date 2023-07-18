@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, RecordsViewModelDelegate>
+@interface HomeController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, RecordsViewModelDelegate, RecordCellDelegate>
 
 - (instancetype)initWithRecordsViewModel:(RecordsViewModel *)recordsViewModel andImageProvider:(ImageProvider *)imageProvider;
 

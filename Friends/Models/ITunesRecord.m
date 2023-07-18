@@ -20,6 +20,7 @@
 - (instancetype)initWithArtist:(NSString *)artist track:(NSString *)track artwork:(NSString *)artwork {
     self = [super init];
     if (self) {
+#warning TODO: set propetries to empty string if get null
         _artist = artist;
         _track = track;
         _artwork = artwork;

@@ -10,17 +10,28 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol RecordCellDelegate;
+
 @interface RecordCell : UITableViewCell
 
 @property (strong, nonatomic) NSString *iconImagePath;
+
+@property(nullable, nonatomic, weak) id<RecordCellDelegate> delegate;
 
 - (void)setUserName:(NSString *)userName;
 
 - (void)setDescription:(NSString *)description;
 
-- (void)setIconImage:(UIImage *)iconImage;
+- (void)setIconImage:(UIImage * _Nullable)iconImage;
 
 -(void)updateUIWithAlignment:(Alignment)alignment;
+
+@end
+
+@protocol RecordCellDelegate <NSObject>
+
+//- (void)handleIconTapForImage:(UIImage * _Nullable)image;
+- (void)handleTapForImageView:(UIImageView * _Nonnull)imageView;
 
 @end
 
