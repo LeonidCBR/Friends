@@ -93,6 +93,13 @@
     [self loadData];
 }
 
+- (void)showMessageWithTitle:(NSString *)title andText:(NSString *)text {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:text preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:action];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
@@ -146,8 +153,7 @@
 #pragma mark - RecordsViewModelDelegate
 
 - (void)handleError:(NSError *)error {
-#warning TODO: Show alert message with error
-    NSLog(@"DEBUG: Got error! %@", error.debugDescription);
+    [self showMessageWithTitle:@"Error" andText:error.debugDescription];
 }
 
 - (void)handleUpdatedRecordsForProvider:(RecordsProviderType)recordsProviderType search:(NSString *)searchText {
@@ -156,6 +162,10 @@
     if (currentProvider == recordsProviderType
         && [_searchBar.text isEqualToString:searchText]) {
         [_tableView reloadData];
+        /// Show message if there is no records
+        if ([_recordsViewModel getRecordsCount] == 0) {
+            [self showMessageWithTitle:@"Warning" andText:@"There in no records to show."];
+        }
     } else {
         /// Searching parameters is outdated! There is nothing to do!
         NSLog(@"DEBUG: Searching parameters is outdated! Current:(%ld)[%@], Outdated:(%ld)[%@]", currentProvider, _searchBar.text, recordsProviderType, searchText);
