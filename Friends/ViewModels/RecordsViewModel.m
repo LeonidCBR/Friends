@@ -30,14 +30,6 @@
     if (self) {
         _dataProvider = dataProvider;
         _records = @[];
-
-#warning TEST
-        ITunesRecord *rec1 = [[ITunesRecord alloc] initWithArtist:@"1 Reformed gangster and wrestler Ricky and his wife Julia make a living performing with their children Saraya and Zak." track:@"1 When brother and sister get the chance to audition for WWE, it seems the family dream is coming true but they are about to learn that becoming a WWE Superstar demands more than they ever imagined possible." artwork:nil];
-        ITunesRecord *rec2 = [[ITunesRecord alloc] initWithArtist:@"2 Reformed gangster and wrestler Ricky and his wife Julia make a living performing with their children Saraya and Zak." track:@"2 When brother and sister get the chance to audition for WWE, it seems the family dream is coming true but they are about to learn that becoming a WWE Superstar demands more than they ever imagined possible." artwork:nil];
-        ITunesRecord *rec3 = [[ITunesRecord alloc] initWithArtist:@"artist 3" track:@"track 3" artwork:nil];
-
-        _records = @[rec1, rec2, rec3];
-
     }
     return self;
 }

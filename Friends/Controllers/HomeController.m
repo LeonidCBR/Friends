@@ -16,9 +16,9 @@
 @property (strong, nonatomic) UISegmentedControl *segmentedControl;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) UITableView *tableView;
-@property (nonatomic) bool isIconExpanded;
-@property (strong, nonatomic) NSArray *iconOriginConstraints;
-@property (strong, nonatomic) NSArray *iconFullScreenConstraints;
+/// The frame is used in order to store origin position of image view
+/// before the view will be expanded
+@property (nonatomic) CGRect originNewImageFrame;
 
 @end
 
@@ -29,7 +29,7 @@
     if (self) {
         _recordsViewModel = recordsViewModel;
         _imageProvider = imageProvider;
-        _isIconExpanded = NO;
+        _originNewImageFrame = CGRectMake(0, 0, 0, 0);
     }
     return self;
 }
@@ -70,10 +70,6 @@
 
 - (void)configureTableView {
     _tableView = [UITableView new];
-
-#warning ClipsToBounds
-    [_tableView setClipsToBounds:NO];
-
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView registerClass:[RecordCell class] forCellReuseIdentifier:RECORD_CELL_IDENTIFIER];
@@ -186,91 +182,59 @@
 #pragma mark - RecordCellDelegate
 
 - (void)handleTapForImageView:(UIImageView * _Nonnull)imageView {
-    if (!_isIconExpanded) {
-        [self expandIconImage:imageView];
-    } else {
-        [self revertIconImagePosition:imageView];
+    [self.navigationItem.titleView setHidden:YES];
+    /// Find out origin frame and calculate position of a new image view
+    /// the new image view will be expanding later
+    CGFloat originImageX = imageView.frame.origin.x;
+    CGFloat originImageY = imageView.frame.origin.y;
+    CGFloat width = imageView.frame.size.width;
+    CGFloat height = imageView.frame.size.height;
+
+    UIView *contentView = imageView.superview;
+    UIView *cell = contentView.superview;
+    if (![cell.superview isKindOfClass:[UITableView class]]) {
+        NSLog(@"DEBUG: Error! Cannot get table view!");
+        return;
     }
-}
+    UITableView *table = (UITableView *)cell.superview;
+    CGFloat tableY = table.frame.origin.y;
+    CGFloat cellY = cell.frame.origin.y;
+    CGFloat contentY = contentView.frame.origin.y;
+    CGFloat offset = table.contentOffset.y;
+    CGFloat newImageY = tableY + cellY + contentY + originImageY - offset;
 
-/// Expand the icon image
-- (void)expandIconImage:(UIImageView *)imageView {
-    _isIconExpanded = YES;
-    [self.view bringSubviewToFront:imageView];
-    /// Collect icon constraints
-    NSMutableArray *iconOriginConstraints = [NSMutableArray new];
-    __auto_type imageViewConstraints = imageView.constraints;
-    for (NSLayoutConstraint *constraint in imageViewConstraints) {
-        if (constraint.firstItem == imageView || constraint.secondItem == imageView) {
-            [iconOriginConstraints addObject:constraint];
-        }
-    }
-    UIView *contentView = imageView.superview; // UITableViewCellContentView
-    __auto_type contentViewConstraints = contentView.constraints;
-    for (NSLayoutConstraint *constraint in contentViewConstraints) {
-        if (constraint.firstItem == imageView || constraint.secondItem == imageView) {
-            [iconOriginConstraints addObject:constraint];
-        }
-    }
-    NSLog(@"DEBUG: Count of constraints: %lu", iconOriginConstraints.count);
-    _iconOriginConstraints = [iconOriginConstraints copy];
-    /// Deactivate old constraints
-    [NSLayoutConstraint deactivateConstraints: iconOriginConstraints];
-    /// Activate new constraints in order to expand the image
-    NSArray *iconFullScreenConstraints = @[
-        [imageView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
-        [imageView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
-        [imageView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
-        [imageView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor]
-    ];
-    _iconFullScreenConstraints = iconFullScreenConstraints;
-    [NSLayoutConstraint activateConstraints:iconFullScreenConstraints];
-    [UIView animateWithDuration:1.0 animations:^{
-        [self.view layoutIfNeeded];
+    CGFloat newImageX = originImageX;
+    CGRect newFrame = CGRectMake(newImageX, newImageY, width, height);
+    _originNewImageFrame = newFrame;
+    UIImageView *expandingView = [[UIImageView alloc] initWithFrame:newFrame];
+    expandingView.backgroundColor=[UIColor blackColor];
+    [expandingView setContentMode:UIViewContentModeScaleAspectFit];
+    [expandingView setImage:imageView.image];
+    [self.view addSubview:expandingView];
+
+    /// Animate expanding the new image view to full screen
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect expandedFrame = self.view.frame;
+        [expandingView setFrame:expandedFrame];
     }];
+
+    /// Add tap gesture to the new image view
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideExpandedImage:)];
+    [expandingView addGestureRecognizer:tap];
+    [expandingView setUserInteractionEnabled:YES];
 }
 
-/// Revert the position of the tapped icon image
-- (void)revertIconImagePosition:(UIImageView *)imageView {
-    /// Revert the icon image
-    NSLog(@"Revert the icon image");
-
-    [NSLayoutConstraint deactivateConstraints:_iconFullScreenConstraints];
-    [NSLayoutConstraint activateConstraints:_iconOriginConstraints];
-    [UIView animateWithDuration:1.0 animations:^{
-        [self.view layoutIfNeeded];
-    }];
-    _iconOriginConstraints = nil;
-    _iconFullScreenConstraints = nil;
-    _isIconExpanded = NO;
-}
-
-/*
-- (void)handleIconTapForImage:(UIImage * _Nullable)image {
-    NSLog(@"DEBUG: TODO expand the image %@", image);
-    UIImageView *expandingImage = [[UIImageView alloc] initWithImage:image];
-    [expandingImage setClipsToBounds:YES];
-    expandingImage.backgroundColor = [UIColor blackColor];
-    [expandingImage setContentMode:UIViewContentModeScaleAspectFit];
-    [expandingImage setUserInteractionEnabled:YES];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageTap:)];
-    [expandingImage addGestureRecognizer:tap];
-
-    [self.view addSubview:expandingImage];
-    expandingImage.translatesAutoresizingMaskIntoConstraints = NO;
-    [NSLayoutConstraint activateConstraints:@[
-        [expandingImage.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
-        [expandingImage.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor],
-        [expandingImage.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
-        [expandingImage.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor]
-    ]];
-    [UIView animateWithDuration:1.0 animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
-- (void)handleImageTap:(UITapGestureRecognizer *)tapGestureRecognizer {
+/// Revert frame of the expanded image view to origin position
+- (void)hideExpandedImage:(UITapGestureRecognizer *)tapGestureRecognizer {
     NSLog(@"DEBUG: Hide the image");
+    UIView *expandedView = tapGestureRecognizer.view;
+    /// Animate narrowing the new image view from full screen to origin frame
+    [UIView animateWithDuration:0.5 animations:^{
+        [expandedView setFrame:self.originNewImageFrame];
+    } completion:^(BOOL finished) {
+        [expandedView removeFromSuperview];
+        [self.navigationItem.titleView setHidden:NO];
+    }];
 }
-*/
+
 @end

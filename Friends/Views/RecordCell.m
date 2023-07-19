@@ -41,11 +41,6 @@
 }
 
 - (void)configureUI {
-#warning ClipsToBounds
-//    self.clipsToBounds = YES;
-    self.clipsToBounds = NO;
-
-
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self configureIcon];
     [self configureUserLabel];
@@ -54,10 +49,6 @@
 }
 
 - (void)configureIcon {
-#warning ClipsToBounds
-    [_iconImageView setClipsToBounds:NO];
-
-
     _iconImageView.backgroundColor = [UIColor lightGrayColor];
     [self.contentView addSubview:_iconImageView];
     _iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -127,7 +118,6 @@
         && (tapGestureRecognizer.view)
         && [tapGestureRecognizer.view isMemberOfClass:[UIImageView class]]) {
         UIImageView *tappedImage = (UIImageView *)tapGestureRecognizer.view;
-//        [_delegate handleIconTapForImage:tappedImage.image];
         [_delegate handleTapForImageView:tappedImage];
     }
 }

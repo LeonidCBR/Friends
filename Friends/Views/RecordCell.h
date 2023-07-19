@@ -30,7 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol RecordCellDelegate <NSObject>
 
-//- (void)handleIconTapForImage:(UIImage * _Nullable)image;
 - (void)handleTapForImageView:(UIImageView * _Nonnull)imageView;
 
 @end
