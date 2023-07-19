@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GithubRecord : NSObject <ApiRecord>
 
-- (instancetype)initWithLogin:(NSString *)login account:(NSString *)account avatar:(NSString *)avatar;
+- (instancetype)initWithLogin:(NSString * _Nullable)login account:(NSString * _Nullable)account avatar:(NSString * _Nullable)avatar;
 
 - (NSString * _Nonnull)user;
 

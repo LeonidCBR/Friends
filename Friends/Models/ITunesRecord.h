@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ITunesRecord : NSObject <ApiRecord>
 
-- (instancetype)initWithArtist:(NSString *)artist track:(NSString *)track artwork:(NSString *)artwork;
+- (instancetype)initWithArtist:(NSString * _Nullable)artist track:(NSString * _Nullable)track artwork:(NSString * _Nullable)artwork;
 
 - (NSString * _Nonnull)user;
 

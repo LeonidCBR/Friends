@@ -17,12 +17,19 @@
 
 @implementation ITunesRecord
 
-- (instancetype)initWithArtist:(NSString *)artist track:(NSString *)track artwork:(NSString *)artwork {
+- (instancetype)initWithArtist:(NSString * _Nullable)artist track:(NSString * _Nullable)track artwork:(NSString * _Nullable)artwork {
     self = [super init];
     if (self) {
-#warning TODO: set propetries to empty string if get null
-        _artist = artist;
-        _track = track;
+        if (artist) {
+            _artist = artist;
+        } else {
+            _artist = @"";
+        }
+        if (track) {
+            _track = track;
+        } else {
+            _track = @"";
+        }
         _artwork = artwork;
     }
     return self;

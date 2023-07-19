@@ -17,12 +17,19 @@
 
 @implementation GithubRecord
 
-- (instancetype)initWithLogin:(NSString *)login account:(NSString *)account avatar:(NSString *)avatar {
+- (instancetype)initWithLogin:(NSString * _Nullable)login account:(NSString * _Nullable)account avatar:(NSString * _Nullable)avatar {
     self = [super init];
     if (self) {
-#warning TODO: set propetries to empty string if get null
-        _login = login;
-        _account = account;
+        if (login) {
+            _login = login;
+        } else {
+            _login = @"";
+        }
+        if (account) {
+            _account = account;
+        } else {
+            _account = @"";
+        }
         _avatar = avatar;
     }
     return self;
