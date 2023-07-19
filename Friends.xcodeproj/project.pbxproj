@@ -29,8 +29,6 @@
 		D7E0CAD62A5B998C0039189D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7E0CAD42A5B998C0039189D /* LaunchScreen.storyboard */; };
 		D7E0CAD92A5B998C0039189D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAD82A5B998C0039189D /* main.m */; };
 		D7E0CAE32A5B998D0039189D /* FriendsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAE22A5B998D0039189D /* FriendsTests.m */; };
-		D7E0CAED2A5B998D0039189D /* FriendsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAEC2A5B998D0039189D /* FriendsUITests.m */; };
-		D7E0CAEF2A5B998D0039189D /* FriendsUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAEE2A5B998D0039189D /* FriendsUITestsLaunchTests.m */; };
 		D7E0CB002A5B9DB70039189D /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CAFF2A5B9DB70039189D /* HomeController.m */; };
 		D7E0CB0F2A5CEB400039189D /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CB0E2A5CEB400039189D /* DataProvider.m */; };
 		D7E0CB112A5D155C0039189D /* DataProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E0CB102A5D155C0039189D /* DataProviderTests.m */; };
@@ -39,13 +37,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		D7E0CADF2A5B998C0039189D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D7E0CABB2A5B99860039189D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D7E0CAC22A5B99860039189D;
-			remoteInfo = Friends;
-		};
-		D7E0CAE92A5B998D0039189D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D7E0CABB2A5B99860039189D /* Project object */;
 			proxyType = 1;
@@ -96,9 +87,6 @@
 		D7E0CAD82A5B998C0039189D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D7E0CADE2A5B998C0039189D /* FriendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FriendsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E0CAE22A5B998D0039189D /* FriendsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsTests.m; sourceTree = "<group>"; };
-		D7E0CAE82A5B998D0039189D /* FriendsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FriendsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7E0CAEC2A5B998D0039189D /* FriendsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsUITests.m; sourceTree = "<group>"; };
-		D7E0CAEE2A5B998D0039189D /* FriendsUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsUITestsLaunchTests.m; sourceTree = "<group>"; };
 		D7E0CAFE2A5B9DB70039189D /* HomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
 		D7E0CAFF2A5B9DB70039189D /* HomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
 		D7E0CB0D2A5CEB400039189D /* DataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataProvider.h; sourceTree = "<group>"; };
@@ -117,13 +105,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D7E0CADB2A5B998C0039189D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D7E0CAE52A5B998D0039189D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -178,7 +159,6 @@
 			children = (
 				D7E0CAC52A5B99860039189D /* Friends */,
 				D7E0CAE12A5B998C0039189D /* FriendsTests */,
-				D7E0CAEB2A5B998D0039189D /* FriendsUITests */,
 				D7E0CAC42A5B99860039189D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -188,7 +168,6 @@
 			children = (
 				D7E0CAC32A5B99860039189D /* Friends.app */,
 				D7E0CADE2A5B998C0039189D /* FriendsTests.xctest */,
-				D7E0CAE82A5B998D0039189D /* FriendsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -226,15 +205,6 @@
 				D75D9E262A67BEB400A7B5F2 /* BaseDecoderTests.m */,
 			);
 			path = FriendsTests;
-			sourceTree = "<group>";
-		};
-		D7E0CAEB2A5B998D0039189D /* FriendsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D7E0CAEC2A5B998D0039189D /* FriendsUITests.m */,
-				D7E0CAEE2A5B998D0039189D /* FriendsUITestsLaunchTests.m */,
-			);
-			path = FriendsUITests;
 			sourceTree = "<group>";
 		};
 		D7E0CB042A5CE7AF0039189D /* Controllers */ = {
@@ -316,24 +286,6 @@
 			productReference = D7E0CADE2A5B998C0039189D /* FriendsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D7E0CAE72A5B998D0039189D /* FriendsUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D7E0CAF82A5B998D0039189D /* Build configuration list for PBXNativeTarget "FriendsUITests" */;
-			buildPhases = (
-				D7E0CAE42A5B998D0039189D /* Sources */,
-				D7E0CAE52A5B998D0039189D /* Frameworks */,
-				D7E0CAE62A5B998D0039189D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D7E0CAEA2A5B998D0039189D /* PBXTargetDependency */,
-			);
-			name = FriendsUITests;
-			productName = FriendsUITests;
-			productReference = D7E0CAE82A5B998D0039189D /* FriendsUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -347,10 +299,6 @@
 						CreatedOnToolsVersion = 14.3.1;
 					};
 					D7E0CADD2A5B998C0039189D = {
-						CreatedOnToolsVersion = 14.3.1;
-						TestTargetID = D7E0CAC22A5B99860039189D;
-					};
-					D7E0CAE72A5B998D0039189D = {
 						CreatedOnToolsVersion = 14.3.1;
 						TestTargetID = D7E0CAC22A5B99860039189D;
 					};
@@ -371,7 +319,6 @@
 			targets = (
 				D7E0CAC22A5B99860039189D /* Friends */,
 				D7E0CADD2A5B998C0039189D /* FriendsTests */,
-				D7E0CAE72A5B998D0039189D /* FriendsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -392,13 +339,6 @@
 			files = (
 				D788713F2A5FAAA400E671A7 /* github.json in Resources */,
 				D78871462A5FC81500E671A7 /* itunes.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D7E0CAE62A5B998D0039189D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,15 +381,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D7E0CAE42A5B998D0039189D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D7E0CAEF2A5B998D0039189D /* FriendsUITestsLaunchTests.m in Sources */,
-				D7E0CAED2A5B998D0039189D /* FriendsUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -457,11 +388,6 @@
 			isa = PBXTargetDependency;
 			target = D7E0CAC22A5B99860039189D /* Friends */;
 			targetProxy = D7E0CADF2A5B998C0039189D /* PBXContainerItemProxy */;
-		};
-		D7E0CAEA2A5B998D0039189D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D7E0CAC22A5B99860039189D /* Friends */;
-			targetProxy = D7E0CAE92A5B998D0039189D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -679,38 +605,6 @@
 			};
 			name = Release;
 		};
-		D7E0CAF92A5B998D0039189D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 973295K87L;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.motodolphin.FriendsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Friends;
-			};
-			name = Debug;
-		};
-		D7E0CAFA2A5B998D0039189D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 973295K87L;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.motodolphin.FriendsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Friends;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -737,15 +631,6 @@
 			buildConfigurations = (
 				D7E0CAF62A5B998D0039189D /* Debug */,
 				D7E0CAF72A5B998D0039189D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D7E0CAF82A5B998D0039189D /* Build configuration list for PBXNativeTarget "FriendsUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D7E0CAF92A5B998D0039189D /* Debug */,
-				D7E0CAFA2A5B998D0039189D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
