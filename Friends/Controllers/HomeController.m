@@ -196,6 +196,7 @@
 /// Expand the icon image
 - (void)expandIconImage:(UIImageView *)imageView {
     _isIconExpanded = YES;
+    [self.view bringSubviewToFront:imageView];
     /// Collect icon constraints
     NSMutableArray *iconOriginConstraints = [NSMutableArray new];
     __auto_type imageViewConstraints = imageView.constraints;
