@@ -53,7 +53,7 @@
             urlString = [NSString stringWithFormat:@"%@%@", API_GITHUB, searchText];
             break;
         default:
-            NSLog(@"Unexpected records provider type!");
+            NSLog(@"DEBUG: Unexpected records provider type!");
             urlString = @"";
             break;
     }

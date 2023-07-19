@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D75D9E272A67BEB400A7B5F2 /* BaseDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D75D9E262A67BEB400A7B5F2 /* BaseDecoderTests.m */; };
 		D75DD8942A6004690016D73C /* BaseDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D75DD8932A6004690016D73C /* BaseDecoder.m */; };
 		D75FEC082A6618E000213A11 /* ImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D75FEC072A6618E000213A11 /* ImageProvider.m */; };
 		D78871332A5F8BF500E671A7 /* ITunesRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871322A5F8BF400E671A7 /* ITunesRecord.m */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D75D9E262A67BEB400A7B5F2 /* BaseDecoderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDecoderTests.m; sourceTree = "<group>"; };
 		D75DD8922A6004690016D73C /* BaseDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDecoder.h; sourceTree = "<group>"; };
 		D75DD8932A6004690016D73C /* BaseDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDecoder.m; sourceTree = "<group>"; };
 		D75FEC062A6618E000213A11 /* ImageProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageProvider.h; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				D788713C2A5F96FF00E671A7 /* GithubDecoderTests.m */,
 				D78871432A5FC70200E671A7 /* ITunesDecoderTests.m */,
 				D7D9A3D22A63C81E00350C2B /* RecordsViewModelTests.m */,
+				D75D9E262A67BEB400A7B5F2 /* BaseDecoderTests.m */,
 			);
 			path = FriendsTests;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7E0CB112A5D155C0039189D /* DataProviderTests.m in Sources */,
+				D75D9E272A67BEB400A7B5F2 /* BaseDecoderTests.m in Sources */,
 				D7E0CB152A5D40AF0039189D /* MockURLProtocol.m in Sources */,
 				D7E0CAE32A5B998D0039189D /* FriendsTests.m in Sources */,
 				D788713D2A5F96FF00E671A7 /* GithubDecoderTests.m in Sources */,

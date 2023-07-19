@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol RecordsDecoder <NSObject>
 
-- (nonnull NSArray<id<ApiRecord>> *)decode:(NSData * _Nonnull)data;
+- (NSArray<id<ApiRecord>> * _Nullable)decode:(NSData * _Nonnull)data error:(NSError * _Nullable *)error;
 
 @end
 

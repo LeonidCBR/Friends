@@ -9,19 +9,15 @@
 
 @implementation BaseDecoder
 
-- (NSDictionary * _Nonnull)getJSONDictionaryFromData:(NSData * _Nonnull)data {
-    NSError *error = nil;
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-    if (error) {
-#warning TODO: Throw wrong data format error
-        return nil;
-    }
+- (NSDictionary * _Nullable)getJSONDictionaryFromData:(NSData * _Nonnull)data error:(NSError * _Nullable *)error{
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:error];
     if (!jsonObject) {
-#warning TODO: Throw wrong data format error
         return nil;
     }
     if (![jsonObject isKindOfClass:[NSDictionary class]]) {
-#warning TODO: Throw wrong data format error
+        NSMutableDictionary *details = [NSMutableDictionary dictionary];
+        [details setValue:@"Invalid data format" forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"Friends" code:901 userInfo:details];
         return nil;
     }
     return jsonObject;
@@ -32,25 +28,21 @@
     NSMutableArray<id<ApiRecord>> *apiRecords;
     id totalCount = [jsonDictionary objectForKey:countKey];
     if (totalCount && [totalCount isKindOfClass:[NSNumber class]] && totalCount > 0) {
-        NSLog(@"INFO: Create an empty array with capacity = %@", totalCount);
+        /// Create an empty array with <totalCount> capacity
         apiRecords = [NSMutableArray<id<ApiRecord>> arrayWithCapacity:[totalCount intValue]];
     } else {
-        NSLog(@"INFO: Create an empty array with default capacity.");
+        /// Create an empty array with default capacity
         apiRecords = [NSMutableArray<id<ApiRecord>> array];
     }
     return apiRecords;
 }
 
-- (NSArray * _Nonnull)getJSONArrayFromDictionary:(NSDictionary * _Nonnull)jsonDictionary arrayForKey:(NSString *)arrayKey {
+- (NSArray * _Nullable)getJSONArrayFromDictionary:(NSDictionary * _Nonnull)jsonDictionary arrayForKey:(NSString *)arrayKey error:(NSError * _Nullable *)error {
     id jsonArray = [jsonDictionary objectForKey:arrayKey];
-
-    if (!jsonArray) {
-#warning TODO: Throw wrong data format error
-        return nil;
-    }
-
-    if (![jsonArray isKindOfClass:[NSArray class]]) {
-#warning TODO: Throw wrong data format error
+    if (!jsonArray || ![jsonArray isKindOfClass:[NSArray class]]) {
+        NSMutableDictionary *details = [NSMutableDictionary dictionary];
+        [details setValue:@"Invalid data format" forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"Friends" code:901 userInfo:details];
         return nil;
     }
     return jsonArray;

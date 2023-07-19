@@ -7,6 +7,8 @@
 
 #import "RecordsViewModel.h"
 
+#warning TODO: Add comments
+
 @interface RecordsViewModel()
 
 @property (strong, nonatomic) id<DataProviderProtocol> dataProvider;
@@ -42,21 +44,28 @@
     __weak RecordsViewModel *weakSelf = self;
     [_dataProvider downloadDataForRecordsProviderType:recordsProviderType andSearchText:searchText completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!data) {
-            if (error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
                     [weakSelf.delegate handleError:error];
-                });
-            } else {
-                // main queue
-#warning TODO: throw unexpected error
-                // [weakSelf handleError:[NSError new! -  error]]
-            }
+                } else {
+                    NSMutableDictionary *details = [NSMutableDictionary dictionary];
+                    [details setValue:@"Unexpected error while downloading data." forKey:NSLocalizedDescriptionKey];
+                    NSError *unexpectedError = [NSError errorWithDomain:@"Friends" code:900 userInfo:details];
+                    [weakSelf.delegate handleError:unexpectedError];
+                }
+            }); // dispatch main queue
+            return;
         }
         id<RecordsDecoder> recordsDecoder = [DecodersFactory getDecoderForRecordsProviderType:recordsProviderType];
-        NSArray *decodedRecords = [recordsDecoder decode:data];
+        NSError *decodeError = nil;
+        NSArray *decodedRecords = [recordsDecoder decode:data error:&decodeError];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf setRecords:decodedRecords];
-            [weakSelf.delegate handleUpdatedRecordsForProvider:recordsProviderType search:searchText];
+            if (!decodedRecords) {
+                [weakSelf.delegate handleError:decodeError];
+            } else {
+                [weakSelf setRecords:decodedRecords];
+                [weakSelf.delegate handleUpdatedRecordsForProvider:recordsProviderType search:searchText];
+            }
         });
     }];
 }

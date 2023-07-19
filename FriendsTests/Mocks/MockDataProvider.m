@@ -9,7 +9,7 @@
 
 @implementation MockDataProvider
 
-- (void)downloadDataForRecordsProviderType:(RecordsProviderType)recordsProviderType andSearchText:(nonnull NSString *)searchText completionHandler:(nonnull void (^)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler { 
+- (void)downloadDataForRecordsProviderType:(RecordsProviderType)recordsProviderType andSearchText:(nonnull NSString *)searchText completionHandler:(nonnull void (^)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
     completionHandler(_shouldReturnData, _shouldReturnResponse, _shouldReturnError);
 }
 

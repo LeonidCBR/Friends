@@ -9,7 +9,7 @@
 
 @implementation DecodersFactory
 
-+ (id<RecordsDecoder>)getDecoderForRecordsProviderType:(RecordsProviderType)recordsProviderType {
++ (id<RecordsDecoder>)getDecoderForRecordsProviderType: (RecordsProviderType)recordsProviderType {
     id<RecordsDecoder> recordsDecoder;
     switch (recordsProviderType) {
         case iTunes:
@@ -19,7 +19,7 @@
             recordsDecoder = [GithubDecoder new];
             break;
         default:
-            NSLog(@"Unexpected records provider type!");
+            NSLog(@"DEBUG: Unexpected records provider type!");
             recordsDecoder = nil;
             break;
     }

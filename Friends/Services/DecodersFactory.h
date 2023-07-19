@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DecodersFactory : NSObject
 
-+ (id<RecordsDecoder>)getDecoderForRecordsProviderType:(RecordsProviderType)recordsProviderType;
++ (id<RecordsDecoder>)getDecoderForRecordsProviderType: (RecordsProviderType)recordsProviderType;
 
 @end
 

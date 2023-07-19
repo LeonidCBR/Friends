@@ -13,6 +13,7 @@
 @property (strong, nonatomic) UILabel *descriptionLabel;
 @property (strong, nonatomic) UIImageView *iconImageView;
 @property (nonatomic) Alignment alignment;
+#warning Refactor - group to array
 @property (strong, nonatomic) NSLayoutConstraint *iconWithContentViewConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *userLabelWithIconConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *iconWithDescriptionLabelConstraint;
@@ -45,7 +46,7 @@
     [self configureIcon];
     [self configureUserLabel];
     [self configureDescriptionLabel];
-    [self configureBasicConstraints];
+    [self configureImmutableConstraints];
 }
 
 - (void)configureIcon {
@@ -69,7 +70,7 @@
     _descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
-- (void)configureBasicConstraints {
+- (void)configureImmutableConstraints {
     [NSLayoutConstraint activateConstraints:
          [[NSArray alloc] initWithObjects:
           [_iconImageView.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor],
@@ -125,6 +126,7 @@
 #pragma mark - Left Alignment
 
 - (void)setLeftAlign {
+#warning Refactor the method
     if ([_iconWithContentViewConstraint isActive]) {
         [_iconWithContentViewConstraint setActive:NO];
     }
@@ -166,6 +168,7 @@
 #pragma mark - Right Alignment
 
 - (void)setRightAlign {
+#warning Refactor the method
     if ([_iconWithContentViewConstraint isActive]) {
         [_iconWithContentViewConstraint setActive:NO];
     }

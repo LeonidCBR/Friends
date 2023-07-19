@@ -28,7 +28,9 @@
     NSBundle *bundle = [NSBundle bundleForClass:[GithubDecoderTests class]];
     NSURL *jsonUrl = [bundle URLForResource:@"github" withExtension:@"json"];
     NSData *jsonData = [[NSData alloc] initWithContentsOfURL:jsonUrl];
-    NSArray *githubRecords = [_sut decode:jsonData];
+    NSError *error = nil;
+    NSArray *githubRecords = [_sut decode:jsonData error:&error];
+    XCTAssertNil(error);
     XCTAssertNotNil(githubRecords, "There is no github records!");
 //    XCTAssertEqual(githubRecords.count, 100);
     int recordsCount = 30;
@@ -48,7 +50,7 @@
         NSBundle *bundle = [NSBundle bundleForClass:[GithubDecoderTests class]];
         NSURL *jsonUrl = [bundle URLForResource:@"github" withExtension:@"json"];
         NSData *jsonData = [[NSData alloc] initWithContentsOfURL:jsonUrl];
-        [_sut decode:jsonData];
+        [_sut decode:jsonData error:nil];
     }];
 }
 

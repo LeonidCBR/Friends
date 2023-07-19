@@ -63,24 +63,27 @@
                     completion(nil, imagePath, error);
                     return;
                 } else {
-#warning TODO: Create appropriate error
-                    // completion(nil, imagePath, nodataError);
-                    completion(nil, imagePath, nil);
+                    NSMutableDictionary *details = [NSMutableDictionary dictionary];
+                    [details setValue:@"Missing data" forKey:NSLocalizedDescriptionKey];
+                    NSError *nodataError = [NSError errorWithDomain:@"Friends" code:903 userInfo:details];
+                    completion(nil, imagePath, nodataError);
                     return;
                 }
             }
             NSData *imageData = [NSData dataWithContentsOfURL:location];
             if (!imageData) {
-#warning TODO: Create missingData error
-                // completion(nil, imagePath, missingData);
-                completion(nil, imagePath, nil);
+                NSMutableDictionary *details = [NSMutableDictionary dictionary];
+                [details setValue:@"Missing data" forKey:NSLocalizedDescriptionKey];
+                NSError *nodataError = [NSError errorWithDomain:@"Friends" code:903 userInfo:details];
+                completion(nil, imagePath, nodataError);
                 return;
             }
             UIImage *downloadedImage = [UIImage imageWithData:imageData];
             if (!downloadedImage) {
-#warning TODO: Create wrongDataFormat error
-                // completion(nil, imagePath, wrongDataFormat);
-                completion(nil, imagePath, nil);
+                NSMutableDictionary *details = [NSMutableDictionary dictionary];
+                [details setValue:@"Invalid data format" forKey:NSLocalizedDescriptionKey];
+                NSError *invalidDataError = [NSError errorWithDomain:@"Friends" code:901 userInfo:details];
+                completion(nil, imagePath, invalidDataError);
                 return;
             }
             [weakSelf.cacheImages setObject:downloadedImage forKey:imagePath];

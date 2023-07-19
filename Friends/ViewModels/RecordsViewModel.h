@@ -37,7 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol RecordsViewModelDelegate <NSObject>
 
 - (void)handleUpdatedRecordsForProvider:(RecordsProviderType)recordsProviderType search:(NSString *)searchText;
-- (void)handleError:(NSError *)error;
+
+- (void)handleError:(NSError * _Nullable)error;
 
 @end
 

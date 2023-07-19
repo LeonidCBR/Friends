@@ -14,11 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// Abstract class
 @interface BaseDecoder : NSObject
 
-- (NSDictionary * _Nonnull)getJSONDictionaryFromData:(NSData * _Nonnull)data;
+- (NSDictionary * _Nullable)getJSONDictionaryFromData:(NSData * _Nonnull)data error:(NSError * _Nullable *)error;
 
 - (NSMutableArray<id<ApiRecord>> * _Nonnull)createEmptyArrayFromJSONDictionary:(NSDictionary * _Nonnull)jsonDictionary withCapacityForKey:(NSString *)countKey;
 
-- (NSArray * _Nonnull)getJSONArrayFromDictionary:(NSDictionary * _Nonnull)jsonDictionary arrayForKey:(NSString *)arrayKey;
+- (NSArray * _Nullable)getJSONArrayFromDictionary:(NSDictionary * _Nonnull)jsonDictionary arrayForKey:(NSString *)arrayKey error:(NSError * _Nullable *)error;
 
 @end
 

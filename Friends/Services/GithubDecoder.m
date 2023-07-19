@@ -12,9 +12,15 @@
 
 @implementation GithubDecoder
 
-- (nonnull NSArray<id<ApiRecord>> *)decode:(NSData * _Nonnull)data {
-    NSDictionary *jsonDictionary = [self getJSONDictionaryFromData:data];
-    NSArray *jsonArray = [self getJSONArrayFromDictionary:jsonDictionary arrayForKey:ITEMS];
+- (NSArray<id<ApiRecord>> * _Nullable)decode:(NSData * _Nonnull)data error:(NSError * _Nullable *)error {
+    NSDictionary *jsonDictionary = [self getJSONDictionaryFromData:data error:error];
+    if (!jsonDictionary) {
+        return nil;
+    }
+    NSArray *jsonArray = [self getJSONArrayFromDictionary:jsonDictionary arrayForKey:ITEMS error:error];
+    if (!jsonArray) {
+        return nil;
+    }
     NSMutableArray<id<ApiRecord>> *githubRecords = [self createEmptyArrayFromJSONDictionary:jsonDictionary withCapacityForKey:ITEMS_COUNT];
     for (NSDictionary *jsonItem in jsonArray) {
         GithubRecord *githubRecord = [self getRecordFromJSONItem:jsonItem];

@@ -29,7 +29,9 @@
     NSBundle *bundle = [NSBundle bundleForClass:[ITunesDecoderTests class]];
     NSURL *jsonUrl = [bundle URLForResource:@"itunes" withExtension:@"json"];
     NSData *jsonData = [[NSData alloc] initWithContentsOfURL:jsonUrl];
-    NSArray *itunesRecords = [_sut decode:jsonData];
+    NSError *error;
+    NSArray *itunesRecords = [_sut decode:jsonData error:&error];
+    XCTAssertNil(error);
     XCTAssertNotNil(itunesRecords, "There is no itunes records!");
     int recordsCount = 50;
     if (itunesRecords.count != recordsCount) {
@@ -48,7 +50,7 @@
         NSBundle *bundle = [NSBundle bundleForClass:[ITunesDecoderTests class]];
         NSURL *jsonUrl = [bundle URLForResource:@"itunes" withExtension:@"json"];
         NSData *jsonData = [[NSData alloc] initWithContentsOfURL:jsonUrl];
-        [_sut decode:jsonData];
+        [_sut decode:jsonData error:nil];
     }];
 }
 

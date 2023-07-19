@@ -159,8 +159,12 @@
 
 #pragma mark - RecordsViewModelDelegate
 
-- (void)handleError:(NSError *)error {
-    [self showMessageWithTitle:@"Error" andText:error.debugDescription];
+- (void)handleError:(NSError * _Nullable)error {
+    if (error) {
+        [self showMessageWithTitle:@"Error" andText:error.debugDescription];
+    } else {
+        [self showMessageWithTitle:@"Error" andText:@"Unexpected error!"];
+    }
 }
 
 - (void)handleUpdatedRecordsForProvider:(RecordsProviderType)recordsProviderType search:(NSString *)searchText {
@@ -182,6 +186,7 @@
 #pragma mark - RecordCellDelegate
 
 - (void)handleTapForImageView:(UIImageView * _Nonnull)imageView {
+#warning Refactor the method
     [self.navigationItem.titleView setHidden:YES];
     /// Find out origin frame and calculate position of a new image view
     /// the new image view will be expanding later
@@ -193,7 +198,6 @@
     UIView *contentView = imageView.superview;
     UIView *cell = contentView.superview;
     if (![cell.superview isKindOfClass:[UITableView class]]) {
-        NSLog(@"DEBUG: Error! Cannot get table view!");
         return;
     }
     UITableView *table = (UITableView *)cell.superview;
@@ -226,7 +230,6 @@
 
 /// Revert frame of the expanded image view to origin position
 - (void)hideExpandedImage:(UITapGestureRecognizer *)tapGestureRecognizer {
-    NSLog(@"DEBUG: Hide the image");
     UIView *expandedView = tapGestureRecognizer.view;
     /// Animate narrowing the new image view from full screen to origin frame
     [UIView animateWithDuration:0.5 animations:^{
