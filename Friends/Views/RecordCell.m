@@ -162,7 +162,6 @@
 
     _descriptionLabelWithContentViewConstraint = [NSLayoutConstraint constraintWithItem:_descriptionLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-16.0];
     [_descriptionLabelWithContentViewConstraint setActive:YES];
-    [self setNeedsLayout];
 }
 
 #pragma mark - Right Alignment
@@ -205,7 +204,6 @@
 
     _iconWithDescriptionLabelConstraint = [NSLayoutConstraint constraintWithItem:_iconImageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_descriptionLabel attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:16.0];
     [_iconWithDescriptionLabelConstraint setActive:YES];
-    [self setNeedsLayout];
 }
 
 @end
