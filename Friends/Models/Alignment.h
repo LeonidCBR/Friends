@@ -8,6 +8,7 @@
 #ifndef Alignment_h
 #define Alignment_h
 
+/// Alignment content in cell
 typedef NS_ENUM(NSInteger, Alignment) {
     left,
     right,

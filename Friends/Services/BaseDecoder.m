@@ -28,10 +28,10 @@
     NSMutableArray<id<ApiRecord>> *apiRecords;
     id totalCount = [jsonDictionary objectForKey:countKey];
     if (totalCount && [totalCount isKindOfClass:[NSNumber class]] && totalCount > 0) {
-        /// Create an empty array with <totalCount> capacity
+        // Create an empty array with <totalCount> capacity
         apiRecords = [NSMutableArray<id<ApiRecord>> arrayWithCapacity:[totalCount intValue]];
     } else {
-        /// Create an empty array with default capacity
+        // Create an empty array with default capacity
         apiRecords = [NSMutableArray<id<ApiRecord>> array];
     }
     return apiRecords;

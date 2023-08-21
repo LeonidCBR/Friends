@@ -139,7 +139,7 @@
     [cell setDescription:record.label];
     [cell setIconImagePath:record.iconPath];
     [cell setDelegate:self];
-    /// Clear image view in cell
+    // Clear image view in cell
     [cell setIconImage:nil];
     if (record.iconPath && [record.iconPath length] > 0) {
         __weak RecordCell *weakCell = cell;
@@ -167,29 +167,32 @@
     }
 }
 
+/// Update UI according the new loaded and parsed data
 - (void)handleUpdatedRecordsForProvider:(RecordsProviderType)recordsProviderType search:(NSString *)searchText {
-    /// Make sure that the searching parameters is not outdated
+    // Make sure that the searching parameters is not outdated
     RecordsProviderType currentProvider = _segmentedControl.selectedSegmentIndex;
     if (currentProvider == recordsProviderType
         && [_searchBar.text isEqualToString:searchText]) {
         [_tableView reloadData];
-        /// Show message if there is no records
+        // Show message if there is no records
         if ([_recordsViewModel getRecordsCount] == 0) {
             [self showMessageWithTitle:@"Warning" andText:@"There in no records to show."];
         }
     } else {
-        /// Searching parameters is outdated! There is nothing to do!
+        // Searching parameters is outdated! There is nothing to do!
         NSLog(@"DEBUG: Searching parameters is outdated! Current:(%ld)[%@], Outdated:(%ld)[%@]", currentProvider, _searchBar.text, recordsProviderType, searchText);
     }
 }
 
 #pragma mark - RecordCellDelegate
 
+/// Find out the origin frame of the tapped image
+/// and calculate position of a new image view
+/// the new image view will be then expanded
 - (void)handleTapForImageView:(UIImageView * _Nonnull)imageView {
 #warning Refactor the method
     [self.navigationItem.titleView setHidden:YES];
-    /// Find out origin frame and calculate position of a new image view
-    /// the new image view will be expanding later
+    // Get the properties of the frame
     CGFloat originImageX = imageView.frame.origin.x;
     CGFloat originImageY = imageView.frame.origin.y;
     CGFloat width = imageView.frame.size.width;
@@ -205,24 +208,25 @@
     CGFloat cellY = cell.frame.origin.y;
     CGFloat contentY = contentView.frame.origin.y;
     CGFloat offset = table.contentOffset.y;
+    // Calculate the new frame
     CGFloat newImageY = tableY + cellY + contentY + originImageY - offset;
-
     CGFloat newImageX = originImageX;
     CGRect newFrame = CGRectMake(newImageX, newImageY, width, height);
     _originNewImageFrame = newFrame;
+    // Create the new image view with the calculated frame
     UIImageView *expandingView = [[UIImageView alloc] initWithFrame:newFrame];
     expandingView.backgroundColor=[UIColor blackColor];
     [expandingView setContentMode:UIViewContentModeScaleAspectFit];
     [expandingView setImage:imageView.image];
     [self.view addSubview:expandingView];
 
-    /// Animate expanding the new image view to full screen
+    // Animate expanding the new image view to full screen
     [UIView animateWithDuration:0.5 animations:^{
         CGRect expandedFrame = self.view.frame;
         [expandingView setFrame:expandedFrame];
     }];
 
-    /// Add tap gesture to the new image view
+    // Add tap gesture to the new image view
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideExpandedImage:)];
     [expandingView addGestureRecognizer:tap];
     [expandingView setUserInteractionEnabled:YES];
@@ -231,7 +235,7 @@
 /// Revert frame of the expanded image view to origin position
 - (void)hideExpandedImage:(UITapGestureRecognizer *)tapGestureRecognizer {
     UIView *expandedView = tapGestureRecognizer.view;
-    /// Animate narrowing the new image view from full screen to origin frame
+    // Animate narrowing the new image view from full screen to origin frame
     [UIView animateWithDuration:0.5 animations:^{
         [expandedView setFrame:self.originNewImageFrame];
     } completion:^(BOOL finished) {

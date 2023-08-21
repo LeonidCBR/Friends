@@ -10,9 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A type that decodes data to an array of records
 @protocol RecordsDecoder <NSObject>
 
-- (NSArray<id<ApiRecord>> * _Nullable)decode:(NSData * _Nonnull)data error:(NSError * _Nullable *)error;
+/// Get records from given data
+///
+/// - Parameters:
+///   - data: The data
+///   - error: The error if the method fails
+///
+/// - Returns: An array of records
+- (NSArray<id<ApiRecord>> * _Nullable)decodeData:(NSData * _Nonnull)data error:(NSError * _Nullable *)error;
 
 @end
 

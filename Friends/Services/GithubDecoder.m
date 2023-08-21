@@ -12,7 +12,7 @@
 
 @implementation GithubDecoder
 
-- (NSArray<id<ApiRecord>> * _Nullable)decode:(NSData * _Nonnull)data error:(NSError * _Nullable *)error {
+- (NSArray<id<ApiRecord>> * _Nullable)decodeData:(NSData * _Nonnull)data error:(NSError * _Nullable *)error {
     NSDictionary *jsonDictionary = [self getJSONDictionaryFromData:data error:error];
     if (!jsonDictionary) {
         return nil;

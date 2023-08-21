@@ -12,9 +12,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A decoder of GitHub records
+///
+/// This is a decoder of data with users' descriptions recieved from GitHub API.
 @interface GithubDecoder : BaseDecoder <RecordsDecoder>
 
-- (NSArray<id<ApiRecord>> * _Nullable)decode:(NSData * _Nonnull)data error:(NSError * _Nullable *)error;
+/// Get records from given data
+/// 
+/// - Parameters:
+///   - data: The data contains GitHub users
+///   - error: The error if the method fails
+///
+/// - Returns: An array of GitHub records
+- (NSArray<id<ApiRecord>> * _Nullable)decodeData:(NSData * _Nonnull)data error:(NSError * _Nullable *)error;
 
 @end
 

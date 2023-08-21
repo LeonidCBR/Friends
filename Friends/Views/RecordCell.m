@@ -12,8 +12,12 @@
 @property (strong, nonatomic) UILabel *userLabel;
 @property (strong, nonatomic) UILabel *descriptionLabel;
 @property (strong, nonatomic) UIImageView *iconImageView;
+/// An alignment of content in the cell
 @property (nonatomic) Alignment alignment;
 #warning Refactor - group to array
+/**
+ These constraints are used for alignment of content (left or right).
+ */
 @property (strong, nonatomic) NSLayoutConstraint *iconWithContentViewConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *userLabelWithIconConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *iconWithDescriptionLabelConstraint;
@@ -41,6 +45,7 @@
     return self;
 }
 
+/// Configure UI
 - (void)configureUI {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self configureIcon];
@@ -70,6 +75,7 @@
     _descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
+/// These constraints are independent of content alignment
 - (void)configureImmutableConstraints {
     [NSLayoutConstraint activateConstraints:
          [[NSArray alloc] initWithObjects:
@@ -146,7 +152,7 @@
     _iconWithContentViewConstraint = [NSLayoutConstraint constraintWithItem:_iconImageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:8.0];
     [_iconWithContentViewConstraint setActive:YES];
 
-    /// User label
+    // User label
     [_userLabel setTextAlignment:NSTextAlignmentLeft];
     _userLabelWithIconConstraint = [NSLayoutConstraint constraintWithItem:_userLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_iconImageView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:16.0];
     [_userLabelWithIconConstraint setActive:YES];
@@ -154,7 +160,7 @@
     _userLabelWithContentViewConstraint = [NSLayoutConstraint constraintWithItem:_userLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-16.0];
     [_userLabelWithContentViewConstraint setActive:YES];
 
-    /// Description label
+    // Description label
     [_descriptionLabel setTextAlignment:NSTextAlignmentLeft];
 
     _iconWithDescriptionLabelConstraint = [NSLayoutConstraint constraintWithItem:_iconImageView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:_descriptionLabel attribute:NSLayoutAttributeLeading multiplier:1.0 constant:-16.0];
@@ -187,7 +193,7 @@
     _iconWithContentViewConstraint = [NSLayoutConstraint constraintWithItem:_iconImageView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-16.0];
     [_iconWithContentViewConstraint setActive:YES];
 
-    /// User label
+    // User label
     [_userLabel setTextAlignment:NSTextAlignmentRight];
 
     _userLabelWithIconConstraint = [NSLayoutConstraint constraintWithItem:_userLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:_iconImageView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:-16.0];
@@ -196,7 +202,7 @@
     _userLabelWithContentViewConstraint = [NSLayoutConstraint constraintWithItem:_userLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:16.0];
     [_userLabelWithContentViewConstraint setActive:YES];
 
-    /// Description label
+    // Description label
     [_descriptionLabel setTextAlignment:NSTextAlignmentRight];
 
     _descriptionLabelWithContentViewConstraint = [NSLayoutConstraint constraintWithItem:_descriptionLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:16.0];

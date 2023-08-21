@@ -12,9 +12,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A decoder of iTunes records
+///
+/// This is a decoder of data with content recieved from iTunes API.
 @interface ITunesDecoder : BaseDecoder <RecordsDecoder>
 
-- (NSArray<id<ApiRecord>> * _Nullable)decode:(NSData * _Nonnull)data error:(NSError * _Nullable *)error;
+/// Get records from given data
+///
+/// - Parameters:
+///   - data: The data contains iTunes content
+///   - error: The error if the method fails
+///
+/// - Returns: An array of iTunes records
+- (NSArray<id<ApiRecord>> * _Nullable)decodeData:(NSData * _Nonnull)data error:(NSError * _Nullable *)error;
 
 @end
 

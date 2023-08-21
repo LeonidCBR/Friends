@@ -9,12 +9,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A type that holds basic data and can be used in order to display the information
 @protocol ApiRecord <NSObject>
 
+/// A user
 - (NSString * _Nonnull)user;
 
+/// Additional information
 - (NSString * _Nonnull)label;
 
+/// A string with URL to an icon or an image
 - (NSString * _Nullable)iconPath;
 
 @end

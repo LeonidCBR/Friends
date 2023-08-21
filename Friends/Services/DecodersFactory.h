@@ -12,8 +12,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A factory of decoders
 @interface DecodersFactory : NSObject
 
+/// Instantiates a decoder for the selected API type
 + (id<RecordsDecoder>)getDecoderForRecordsProviderType: (RecordsProviderType)recordsProviderType;
 
 @end

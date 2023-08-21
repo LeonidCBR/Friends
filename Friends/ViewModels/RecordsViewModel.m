@@ -7,11 +7,10 @@
 
 #import "RecordsViewModel.h"
 
-#warning TODO: Add comments
-
 @interface RecordsViewModel()
 
 @property (strong, nonatomic) id<DataProviderProtocol> dataProvider;
+/// Records were fetched from API endpoint
 @property (strong, nonatomic) NSArray<id<ApiRecord>> *records;
 
 @end
@@ -58,7 +57,7 @@
         }
         id<RecordsDecoder> recordsDecoder = [DecodersFactory getDecoderForRecordsProviderType:recordsProviderType];
         NSError *decodeError = nil;
-        NSArray *decodedRecords = [recordsDecoder decode:data error:&decodeError];
+        NSArray *decodedRecords = [recordsDecoder decodeData:data error:&decodeError];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!decodedRecords) {
                 [weakSelf.delegate handleError:decodeError];
@@ -92,7 +91,7 @@
             return left;
         }
     } else {
-        /// Return default value
+        // Return default value
         return left;
     }
 }

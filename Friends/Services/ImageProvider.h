@@ -9,12 +9,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A service provides images
 @interface ImageProvider : NSObject
 
 - (instancetype)init;
 
 - (instancetype)initWithUrlSession:(NSURLSession * _Nonnull)urlSession;
 
+/// Gets image for the specific URL
 - (void)getImageWithPath:(NSString * _Nonnull)imagePath completionHandler:(void (^)(UIImage * _Nullable image, NSString * imagePath, NSError * _Nullable error))completion;
 
 @end

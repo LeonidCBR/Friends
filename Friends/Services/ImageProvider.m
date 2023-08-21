@@ -39,19 +39,19 @@
 }
 
 - (void)getImageWithPath:(NSString * _Nonnull)imagePath completionHandler:(void (^)(UIImage * _Nullable, NSString * _Nonnull, NSError * _Nullable))completion {
-    /// Check if image exists in cache
+    // Check if image exists in cache
     UIImage *cachedImage = [_cacheImages objectForKey:imagePath];
     if (cachedImage) {
         completion(cachedImage, imagePath, nil);
         return;
     }
-    /// Check loading status to prevent multiple downloads
+    // Check loading status to prevent multiple downloads
     if ([[_loadingStateItems objectForKey:imagePath] boolValue] == YES) {
         return;
     }
-    /// There is no image in cache. Downloading...
+    // There is no image in cache. Downloading...
     NSURL *imageURL = [NSURL URLWithString:imagePath];
-    /// Start loading
+    // Start loading
     [_loadingStateItems setObject:@YES forKey:imagePath];
     __weak ImageProvider *weakSelf = self;
     [[_urlSession downloadTaskWithURL:imageURL completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {

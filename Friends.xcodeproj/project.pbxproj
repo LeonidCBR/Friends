@@ -10,6 +10,7 @@
 		D75D9E272A67BEB400A7B5F2 /* BaseDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D75D9E262A67BEB400A7B5F2 /* BaseDecoderTests.m */; };
 		D75DD8942A6004690016D73C /* BaseDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D75DD8932A6004690016D73C /* BaseDecoder.m */; };
 		D75FEC082A6618E000213A11 /* ImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D75FEC072A6618E000213A11 /* ImageProvider.m */; };
+		D77D77722A86039F00408B93 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D77D77712A86039F00408B93 /* README.md */; };
 		D78871332A5F8BF500E671A7 /* ITunesRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871322A5F8BF400E671A7 /* ITunesRecord.m */; };
 		D78871362A5F928400E671A7 /* GithubRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871352A5F928400E671A7 /* GithubRecord.m */; };
 		D788713B2A5F954000E671A7 /* GithubDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D788713A2A5F954000E671A7 /* GithubDecoder.m */; };
@@ -18,6 +19,7 @@
 		D78871422A5FC50900E671A7 /* ITunesDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871412A5FC50900E671A7 /* ITunesDecoder.m */; };
 		D78871442A5FC70200E671A7 /* ITunesDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D78871432A5FC70200E671A7 /* ITunesDecoderTests.m */; };
 		D78871462A5FC81500E671A7 /* itunes.json in Resources */ = {isa = PBXBuildFile; fileRef = D78871452A5FC81500E671A7 /* itunes.json */; };
+		D790A0CD2A849C2B00EC31AD /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = D790A0CC2A849C2B00EC31AD /* Documentation.docc */; };
 		D7CD37432A6248F100FDF304 /* RecordsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CD37422A6248F100FDF304 /* RecordsViewModel.m */; };
 		D7CD37472A62728F00FDF304 /* DecodersFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CD37462A62728F00FDF304 /* DecodersFactory.m */; };
 		D7CD374B2A6279B300FDF304 /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CD374A2A6279B300FDF304 /* RecordCell.m */; };
@@ -51,6 +53,7 @@
 		D75DD8932A6004690016D73C /* BaseDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDecoder.m; sourceTree = "<group>"; };
 		D75FEC062A6618E000213A11 /* ImageProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageProvider.h; sourceTree = "<group>"; };
 		D75FEC072A6618E000213A11 /* ImageProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageProvider.m; sourceTree = "<group>"; };
+		D77D77712A86039F00408B93 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D78871302A5F8AF900E671A7 /* ApiRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiRecord.h; sourceTree = "<group>"; };
 		D78871312A5F8BF400E671A7 /* ITunesRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITunesRecord.h; sourceTree = "<group>"; };
 		D78871322A5F8BF400E671A7 /* ITunesRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITunesRecord.m; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 		D78871412A5FC50900E671A7 /* ITunesDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITunesDecoder.m; sourceTree = "<group>"; };
 		D78871432A5FC70200E671A7 /* ITunesDecoderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITunesDecoderTests.m; sourceTree = "<group>"; };
 		D78871452A5FC81500E671A7 /* itunes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = itunes.json; sourceTree = "<group>"; };
+		D790A0CC2A849C2B00EC31AD /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		D7BF21382A64CDC40078FFC2 /* Alignment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Alignment.h; sourceTree = "<group>"; };
 		D7CD37412A6248F100FDF304 /* RecordsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordsViewModel.h; sourceTree = "<group>"; };
 		D7CD37422A6248F100FDF304 /* RecordsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordsViewModel.m; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				D7E0CAD42A5B998C0039189D /* LaunchScreen.storyboard */,
 				D7E0CAD72A5B998C0039189D /* Info.plist */,
 				D7E0CAD82A5B998C0039189D /* main.m */,
+				D790A0CC2A849C2B00EC31AD /* Documentation.docc */,
+				D77D77712A86039F00408B93 /* README.md */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -328,6 +334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D77D77722A86039F00408B93 /* README.md in Resources */,
 				D7E0CAD62A5B998C0039189D /* LaunchScreen.storyboard in Resources */,
 				D7E0CAD32A5B998C0039189D /* Assets.xcassets in Resources */,
 			);
@@ -362,6 +369,7 @@
 				D7CD37432A6248F100FDF304 /* RecordsViewModel.m in Sources */,
 				D7E0CACB2A5B99860039189D /* SceneDelegate.m in Sources */,
 				D7E0CB0F2A5CEB400039189D /* DataProvider.m in Sources */,
+				D790A0CD2A849C2B00EC31AD /* Documentation.docc in Sources */,
 				D78871362A5F928400E671A7 /* GithubRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +531,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 973295K87L;
+				DOCC_HOSTING_BASE_PATH = friends;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Friends/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -550,6 +559,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 973295K87L;
+				DOCC_HOSTING_BASE_PATH = friends;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Friends/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
