@@ -161,6 +161,7 @@
 		D7E0CABA2A5B99860039189D = {
 			isa = PBXGroup;
 			children = (
+				D77D77712A86039F00408B93 /* README.md */,
 				D7E0CAC52A5B99860039189D /* Friends */,
 				D7E0CAE12A5B998C0039189D /* FriendsTests */,
 				D7E0CAC42A5B99860039189D /* Products */,
@@ -194,7 +195,6 @@
 				D7E0CAD72A5B998C0039189D /* Info.plist */,
 				D7E0CAD82A5B998C0039189D /* main.m */,
 				D790A0CC2A849C2B00EC31AD /* Documentation.docc */,
-				D77D77712A86039F00408B93 /* README.md */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
