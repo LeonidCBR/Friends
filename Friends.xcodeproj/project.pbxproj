@@ -531,7 +531,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 973295K87L;
-				DOCC_HOSTING_BASE_PATH = friends;
+				DOCC_HOSTING_BASE_PATH = Friends;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Friends/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -559,7 +559,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 973295K87L;
-				DOCC_HOSTING_BASE_PATH = friends;
+				DOCC_HOSTING_BASE_PATH = Friends;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Friends/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
