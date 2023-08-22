@@ -11,6 +11,10 @@ There are two API services:
 
 As a result we get a bunch of ``GithubRecord``s or ``ITunesRecord``s depending what we a looking for.
 
+![An illustration displaying the UI for finding of contents on GitHub.](docs/images/github@3x.png)
+
+![An illustration displaying the UI for finding of contents on iTunes.](docs/images/itunes@3x.png)
+
 ### Features
 
 - You can expand an icon to full screen.
