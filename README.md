@@ -19,3 +19,6 @@ As a result we get a bunch of ``GithubRecord``s or ``ITunesRecord``s depending w
 
 - You can expand an icon to full screen.
 
+### Documentation
+
+Friends' Swift-DocC documentation is [available here](/Friends/documentation/friends).
